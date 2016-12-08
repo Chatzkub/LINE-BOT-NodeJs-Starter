@@ -1,6 +1,6 @@
 var app = require('express')();
 var bodyParser = require('body-parser');
-//var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8080;
 var bot = require('./bot');
 
 app.use(bodyParser.json());
@@ -16,9 +16,9 @@ app.get('/', function (req, res) {
 	res.send('<h1>Hello Node.js</h1>');
 });
 
-// app.listen(port , function() {
-// 	console.log('Starting node.js on port ' + port);
-// });
+app.listen(port , function() {
+	console.log('Starting node.js on port ' + port);
+});
 
 // https://nuuneoi.com/blog/blog.php?read_id=882
 
