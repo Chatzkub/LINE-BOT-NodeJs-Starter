@@ -7,3 +7,11 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+// http://localhost:3000/verify
+// https://nuuneoi.com/blog/blog.php?read_id=882
+// https://github.com/geumatee/LineBotTest/blob/master/routes/verify.js
+// https://developers.line.me/ba/u90cdac5120436b4e35bde4e039ec3575/bot
+// https://admin-official.line.me/6647483/bot-api/setting
+// https://code.visualstudio.com/docs/runtimes/nodejs

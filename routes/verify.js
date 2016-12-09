@@ -6,20 +6,14 @@ var router = express.Router();
 
 var request = require('request');
 
-// var app = express();
-// var bodyParser = require('body-parser');
-// var multer = require('multer'); // v1.0.5
-// var upload = multer(); // for parsing multipart/form-data
-
-/* GET users listing. */
 router.get('/', function(req, res, next) {
     var headers = {
-        'Authorization': 'tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU='
+        'Authorization': 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU='
     };
 
     var options = {
         url: 'https://api.line.me/v1/oauth/verify',
-        proxy: 'http://fixie:IaHUTllshvVDVfU@velodrome.usefixie.com:80',
+        //proxy: 'http://fixie:IaHUTllshvVDVfU@velodrome.usefixie.com:80',
         headers: headers
     };
 
