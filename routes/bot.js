@@ -7,10 +7,7 @@ var request = require('request');
 var app = express();
 var bodyParser = require('body-parser');
 
-/* GET users listing. */
-//router.get('/', function(req, res, next) {
-//  res.send(test);
-//});
+
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -48,6 +45,7 @@ router.post('/',function(req, res){
 
           options = {
                   url: 'https://api.line.me/v2/bot/message/reply',
+                  //proxy: '',
                   method: 'POST',
                   headers: headers,
                   body: JSON.stringify(data)
@@ -61,7 +59,7 @@ router.post('/',function(req, res){
                         }
           });
         } else if(req.body.events[i].message.type == 'image') {
-          
+
         }
       }
 
@@ -69,6 +67,14 @@ router.post('/',function(req, res){
   }else {
     res.send("no body");
   }
+});
+
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+ res.send(test);
+   console.log('sadasdsadsadsa');
+
 });
 
 module.exports = router;
