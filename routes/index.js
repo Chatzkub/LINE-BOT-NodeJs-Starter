@@ -15,3 +15,6 @@ module.exports = router;
 // https://developers.line.me/ba/u90cdac5120436b4e35bde4e039ec3575/bot
 // https://admin-official.line.me/6647483/bot-api/setting
 // https://code.visualstudio.com/docs/runtimes/nodejs
+
+//heroku git:remote -a protected-tundra-50195
+//heroku logs --tail
