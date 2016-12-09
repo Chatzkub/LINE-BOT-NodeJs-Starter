@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({
 
 
 router.post('/',function(req, res){
+  console.log('call function');
   if (req.body != undefined) {
     res.send(JSON.stringify(req.body));
   }else {
