@@ -43,6 +43,9 @@ router.post('/',function(req, res){
           };
 
           console.log(JSON.stringify(data));
+          console.log("######data.messages########");
+          console.log(JSON.stringify(data.messages));
+          console.log("########end######");
 
           options = {
                   url: 'https://api.line.me/v2/bot/message/reply',
