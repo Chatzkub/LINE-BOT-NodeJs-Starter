@@ -25,8 +25,6 @@ router.post('/',function(req, res){
 
     for(i = 0; i < req.body.events.length; i++){
       
-      //console.log(res.send(typeof(body)));
-
       if(req.body.events[i].type == 'message'){
         if(req.body.events[i].message.type == 'text'){
           var message = {
@@ -44,7 +42,7 @@ router.post('/',function(req, res){
             'Authorization': 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU='
           };
 
-          //console.log(JSON.stringify(data));
+          console.log(JSON.stringify(data));
 
           options = {
                   url: 'https://api.line.me/v2/bot/message/reply',
@@ -55,37 +53,17 @@ router.post('/',function(req, res){
               };
 
           request(options, function (error, response, body) {
-                        console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body));
+                        console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
                         res.send(JSON.stringify(response));
                         if (!error && response.statusCode == 200) {
                             console.log(body);
+                        }else {
+                            console.log("Error statusCode" + response.statusCode + "################################################");
                         }
           });
 
-
-
-
         } else if(req.body.events[i].message.type == 'image') {
-          headers = {
-            'Authorization': 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU='
-          };
-
-          options = {
-              url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
-              headers: headers,
-              encoding: null,
-              method: 'GET'
-          };
-
-          request(options, function (error, response, body) {
-              if (!error && response.statusCode == 200) {
-                  console.log('******type: ' + typeof(body));
-                  console.log('******content json: ' + JSON.stringify(body));
-              } else {
-                  console.log('error');
-                  res.send("error");
-              }
-           });
+         
         }
       }
     }
