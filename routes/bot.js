@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 
 
 router.post('/',function(req, res){
-  console.log('call function');
+  console.log('call function***********************');
   if (req.body != undefined) {
     //console.log('request body: ' + JSON.stringify(req.body));
 
@@ -25,7 +25,7 @@ router.post('/',function(req, res){
 
     for(i = 0; i < req.body.events.length; i++){
       
-      console.log(res.send(typeof(body)));
+      //console.log(res.send(typeof(body)));
 
       if(req.body.events[i].type == 'message'){
         if(req.body.events[i].message.type == 'text'){
