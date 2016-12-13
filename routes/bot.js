@@ -24,6 +24,9 @@ router.post('/',function(req, res){
     var options;
 
     for(i = 0; i < req.body.events.length; i++){
+      
+      console.log(res.send(typeof(body)));
+
       if(req.body.events[i].type == 'message'){
         if(req.body.events[i].message.type == 'text'){
           var message = {
@@ -59,10 +62,28 @@ router.post('/',function(req, res){
                         }
           });
         } else if(req.body.events[i].message.type == 'image') {
+          headers = {
+            'Authorization': 'Bearer r66gB/QeQB9YKgvhT9QZoXmRuf0VIIIfsKiszE6+Qa0P2goun2p1hqBhuJwlTZNA5VOeojEffX95TJB162tqBXNWLxfuQzVlfuThpbzhtPhs9HddCEtj0+GxlJXufpEMAdHAhuu0INpJZxZudiYbYAdB04t89/1O/w1cDnyilFU='
+          };
 
+          options = {
+              url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
+              headers: headers,
+              encoding: null,
+              method: 'GET'
+          };
+
+          request(options, function (error, response, body) {
+              if (!error && response.statusCode == 200) {
+                  console.log('******type: ' + typeof(body));
+                 console.log('******content json: ' + JSON.stringify(body));
+              } else {
+                  console.log('error');
+                  res.send("error");
+              }
+           });
         }
       }
-
     }
   }else {
     res.send("no body");
@@ -73,8 +94,6 @@ router.post('/',function(req, res){
 /* GET users listing. */
 router.get('/', function(req, res, next) {
  res.send(test);
-   console.log('sadasdsadsadsa');
-
 });
 
 module.exports = router;
