@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 router.post('/',function(req, res){
   console.log('call function');
   if (req.body != undefined) {
-    console.log('request body: ' + JSON.stringify(req.body));
+    //console.log('request body: ' + JSON.stringify(req.body));
 
     var i;
     var header;
@@ -44,7 +44,7 @@ router.post('/',function(req, res){
             'Authorization': 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU='
           };
 
-          console.log(JSON.stringify(data));
+          //console.log(JSON.stringify(data));
 
           options = {
                   url: 'https://api.line.me/v2/bot/message/reply',
@@ -61,6 +61,10 @@ router.post('/',function(req, res){
                             console.log(body);
                         }
           });
+
+
+
+
         } else if(req.body.events[i].message.type == 'image') {
           headers = {
             'Authorization': 'Bearer r66gB/QeQB9YKgvhT9QZoXmRuf0VIIIfsKiszE6+Qa0P2goun2p1hqBhuJwlTZNA5VOeojEffX95TJB162tqBXNWLxfuQzVlfuThpbzhtPhs9HddCEtj0+GxlJXufpEMAdHAhuu0INpJZxZudiYbYAdB04t89/1O/w1cDnyilFU='
@@ -76,7 +80,7 @@ router.post('/',function(req, res){
           request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
                   console.log('******type: ' + typeof(body));
-                 console.log('******content json: ' + JSON.stringify(body));
+                  console.log('******content json: ' + JSON.stringify(body));
               } else {
                   console.log('error');
                   res.send("error");
