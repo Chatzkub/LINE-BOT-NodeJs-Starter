@@ -83,6 +83,9 @@ router.post('/',function(req, res){
                             // console.log('content: ' + body);
                             console.log("########IMAGE######");
                             console.log('content json: ' + JSON.stringify(body));
+                            // var data_img = JSON.stringify(body) 
+                            // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
+                            // document.body.appendChild(data_img);
                             // res.send(typeof(body));
 
 
@@ -90,6 +93,7 @@ router.post('/',function(req, res){
                             console.log('error');
                             res.send("error");
                         }
+                        console.log("########END IMAGE######");
                     });
         }
       }
