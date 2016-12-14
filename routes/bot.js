@@ -78,7 +78,7 @@ router.post('/',function(req, res){
               encoding: null,
               method: 'GET'
           };
-          var data_img;
+          //var data_img;
           request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
                   // console.log('type: ' + typeof(body));
@@ -90,17 +90,35 @@ router.post('/',function(req, res){
                   // document.body.appendChild(data_img);
                   // res.send(typeof(body));
 
-                  data_img = JSON.stringify(body.data)
+                  //data_img = JSON.stringify(body.data)
                   //console.log('data_img: ' + data_img.length);
+
+
+                  var blob = bucket.file("temp.jpg");
+                  var blobStream = blob.createWriteStream({
+                      metadata: {
+                          contentType: 'image/jpeg',
+                          metadata: {
+                              custom: 'metadata'
+                          }
+                      }
+                  }).on('error', function(err){
+                      console.log('error: ' + err);
+                      res.send("error: " + err);
+                      return;
+                  }).on('finish', function(){
+                      console.log('success');
+                      res.status(200).send('success');
+                  });
+                  streamifier.createReadStream(body).pipe(blobStream);
               } else {
                   console.log('error');
                   res.send("error");
               }
               console.log("########LOAD IMAGE######");
 
-              var img = data_img 
-              img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
-              document.body.appendChild(img);
+              data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
+              document.body.appendChild(data_img);
 
               console.log("########SHOW IMAGE######");
 
@@ -120,7 +138,13 @@ function getAuthorization(){
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
- res.send(test);
+    //res.send(test);
+    res.type('jpg'); 
+    var file = bucket.file("temp.jpg");
+    file.download().then(function(data) {
+        var contents = data[0];
+        res.end(contents, 'binary');
+    });
 });
 
 module.exports = router;
