@@ -93,7 +93,7 @@ router.post('/',function(req, res){
                   console.log("########IMAGE######");
                   //console.log('content json: ' + JSON.stringify(body));
 
-                  console.log('content json: ' + JSON.stringify(body.data));
+                  console.log('content json: ' + JSON.stringify(body.data[0]));
 
                   // var data_img = JSON.stringify(body) 
                   // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
