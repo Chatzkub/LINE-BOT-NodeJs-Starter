@@ -42,10 +42,10 @@ router.post('/',function(req, res){
             'Authorization': getAuthorization()
           };
 
-          console.log(JSON.stringify(data));
-          console.log("######data.messages########");
-          console.log(JSON.stringify(data.messages[0].text));
-          console.log("########end######");
+          //console.log(JSON.stringify(data));
+          //console.log("######data.messages########");
+          //console.log(JSON.stringify(data.messages[0].text));
+          //console.log("########end######");
 
           options = {
                   url: 'https://api.line.me/v2/bot/message/reply',
@@ -59,42 +59,49 @@ router.post('/',function(req, res){
                         console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
                         res.send(JSON.stringify(response));
                         if (!error && response.statusCode == 200) {
-                            console.log(body);
+                            //console.log(body);
+                            console.log(JSON.stringify(data.messages[0].text));
                         }else {
                             console.log("Error statusCode" + response.statusCode + "################################################");
                         }
           });
 
         } else if(req.body.events[i].message.type == 'image') {
-                    headers = {
-                        'Authorization': getAuthorization()
-                    };
 
-                    options = {
-                        url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
-                        headers: headers,
-                        encoding: null,
-                        method: 'GET'
-                    };
+          headers = {
+              'Authorization': getAuthorization()
+          };
 
-                     request(options, function (error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                            // console.log('type: ' + typeof(body));
-                            // console.log('content: ' + body);
-                            console.log("########IMAGE######");
-                            console.log('content json: ' + JSON.stringify(body));
-                            // var data_img = JSON.stringify(body) 
-                            // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
-                            // document.body.appendChild(data_img);
-                            // res.send(typeof(body));
+          options = {
+              url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
+              headers: headers,
+              encoding: null,
+              method: 'GET'
+          };
+          var data_img;
+          request(options, function (error, response, body) {
+              if (!error && response.statusCode == 200) {
+                  // console.log('type: ' + typeof(body));
+                  // console.log('content: ' + body);
+                  console.log("########IMAGE######");
+                  //console.log('content json: ' + JSON.stringify(body));
+                  // var data_img = JSON.stringify(body) 
+                  // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
+                  // document.body.appendChild(data_img);
+                  // res.send(typeof(body));
 
+                  data_img = JSON.stringify(body.data[0])
+                  console.log('data_img: ' + data_img.length);
+              } else {
+                  console.log('error');
+                  res.send("error");
+              }
+              console.log("########END IMAGE######");
 
-                        } else {
-                            console.log('error');
-                            res.send("error");
-                        }
-                        console.log("########END IMAGE######");
-                    });
+              var img = data_img 
+              img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
+              document.body.appendChild(img);
+          });
         }
       }
     }
