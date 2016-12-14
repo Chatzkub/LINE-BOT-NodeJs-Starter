@@ -91,12 +91,12 @@ router.post('/',function(req, res){
                   // res.send(typeof(body));
 
                   data_img = JSON.stringify(body.data)
-                  console.log('data_img: ' + data_img.length);
+                  //console.log('data_img: ' + data_img.length);
               } else {
                   console.log('error');
                   res.send("error");
               }
-              console.log("########END IMAGE######");
+              console.log("########LOAD IMAGE######");
 
               var img = data_img 
               img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
