@@ -16,9 +16,6 @@ app.use(bodyParser.urlencoded({
 
 router.post('/',function(req, res){
   console.log('call function***********************');
-  console.log(getAuthorization());
-
-  
   if (req.body != undefined) {
     //console.log('request body: ' + JSON.stringify(req.body));
 
@@ -79,6 +76,21 @@ router.post('/',function(req, res){
                         encoding: null,
                         method: 'GET'
                     };
+
+                     request(options, function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            // console.log('type: ' + typeof(body));
+                            // console.log('content: ' + body);
+                            console.log("########IMAGE######");
+                            console.log('content json: ' + JSON.stringify(body));
+                            // res.send(typeof(body));
+
+
+                        } else {
+                            console.log('error');
+                            res.send("error");
+                        }
+                    });
         }
       }
     }
