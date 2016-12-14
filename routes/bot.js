@@ -90,7 +90,7 @@ router.post('/',function(req, res){
                   // document.body.appendChild(data_img);
                   // res.send(typeof(body));
 
-                  data_img = JSON.stringify(body.data[0])
+                  data_img = JSON.stringify(body.data)
                   console.log('data_img: ' + data_img.length);
               } else {
                   console.log('error');
@@ -101,6 +101,9 @@ router.post('/',function(req, res){
               var img = data_img 
               img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
               document.body.appendChild(img);
+
+              console.log("########SHOW IMAGE######");
+
           });
         }
       }
