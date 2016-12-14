@@ -45,7 +45,8 @@ router.post('/',function(req, res){
           console.log(JSON.stringify(data));
           console.log("######data.messages########");
           console.log(JSON.stringify(data.messages));
-          //console.log(JSON.stringify(messages.text));
+          console.log(JSON.stringify(data.messages.text));
+          console.log(JSON.stringify(messages.text));
           console.log("########end######");
 
           options = {
