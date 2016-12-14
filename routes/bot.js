@@ -6,6 +6,7 @@ var router = express.Router();
 var request = require('request');
 var app = express();
 var bodyParser = require('body-parser');
+var data_img;
 
 // var gcs = require('@google-cloud/storage')({
 //   projectId: '<projectID>',
@@ -85,42 +86,15 @@ router.post('/',function(req, res){
               encoding: null,
               method: 'GET'
           };
-          var data_img;
+
           request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
                   // console.log('type: ' + typeof(body));
                   // console.log('content: ' + body);
                   console.log("########IMAGE######");
                   //console.log('content json: ' + JSON.stringify(body));
-
                   console.log('content json: ' + JSON.stringify(body));
                   data_img = JSON.stringify(body)
-                  // var data_img = JSON.stringify(body) 
-                  // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
-                  // document.body.appendChild(data_img);
-                  // res.send(typeof(body));
-
-                  //data_img = JSON.stringify(body.data)
-                  //console.log('data_img: ' + data_img.length);
-
-
-                  // var blob = bucket.file("temp.jpg");
-                  // var blobStream = blob.createWriteStream({
-                  //     metadata: {
-                  //         contentType: 'image/jpeg',
-                  //         metadata: {
-                  //             custom: 'metadata'
-                  //         }
-                  //     }
-                  // }).on('error', function(err){
-                  //     console.log('error: ' + err);
-                  //     res.send("error: " + err);
-                  //     return;
-                  // }).on('finish', function(){
-                  //     console.log('success');
-                  //     res.status(200).send('success');
-                  // });
-                  // streamifier.createReadStream(body).pipe(blobStream);
                   console.log("########END LOAD IMAGE######");
               } else {
                   console.log('error');
@@ -143,6 +117,17 @@ router.post('/',function(req, res){
   }
 });
 
+app.post('/sendimage', function (req, res) {
+
+  res.send("in function sendimage");
+
+	// var json = req.body;
+	// res.send('Add new ' + json.name + ' Completed!');
+});
+
+function sendImage(){
+
+}
 
 function getAuthorization(){
   return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
@@ -150,13 +135,15 @@ function getAuthorization(){
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    //res.send(test);
-    res.type('jpg'); 
-    var file = bucket.file("temp.jpg");
-    file.download().then(function(data) {
-        var contents = data[0];
-        res.end(contents, 'binary');
-    });
+    res.send(test);
+    // res.type('jpg'); 
+    // var file = bucket.file("temp.jpg");
+    // file.download().then(function(data) {
+    //     var contents = data[0];
+    //     res.end(contents, 'binary');
+    // });
 });
+
+
 
 module.exports = router;
