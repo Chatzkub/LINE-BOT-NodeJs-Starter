@@ -7,7 +7,14 @@ var request = require('request');
 var app = express();
 var bodyParser = require('body-parser');
 
+// var gcs = require('@google-cloud/storage')({
+//   projectId: '<projectID>',
+//   keyFilename: '/app/testfacebook-37d35-firebase-adminsdk-xjhtw-a095d994f6.json'
+// });
 
+// var streamifier = require('streamifier');
+
+// var bucket = gcs.bucket('testfacebook-37d35.appspot.com');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -84,7 +91,7 @@ router.post('/',function(req, res){
                   // console.log('type: ' + typeof(body));
                   // console.log('content: ' + body);
                   console.log("########IMAGE######");
-                  //console.log('content json: ' + JSON.stringify(body));
+                  console.log('content json: ' + JSON.stringify(body));
                   // var data_img = JSON.stringify(body) 
                   // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
                   // document.body.appendChild(data_img);
@@ -94,31 +101,32 @@ router.post('/',function(req, res){
                   //console.log('data_img: ' + data_img.length);
 
 
-                  var blob = bucket.file("temp.jpg");
-                  var blobStream = blob.createWriteStream({
-                      metadata: {
-                          contentType: 'image/jpeg',
-                          metadata: {
-                              custom: 'metadata'
-                          }
-                      }
-                  }).on('error', function(err){
-                      console.log('error: ' + err);
-                      res.send("error: " + err);
-                      return;
-                  }).on('finish', function(){
-                      console.log('success');
-                      res.status(200).send('success');
-                  });
-                  streamifier.createReadStream(body).pipe(blobStream);
+                  // var blob = bucket.file("temp.jpg");
+                  // var blobStream = blob.createWriteStream({
+                  //     metadata: {
+                  //         contentType: 'image/jpeg',
+                  //         metadata: {
+                  //             custom: 'metadata'
+                  //         }
+                  //     }
+                  // }).on('error', function(err){
+                  //     console.log('error: ' + err);
+                  //     res.send("error: " + err);
+                  //     return;
+                  // }).on('finish', function(){
+                  //     console.log('success');
+                  //     res.status(200).send('success');
+                  // });
+                  // streamifier.createReadStream(body).pipe(blobStream);
+                  console.log("########END IMAGE######");
               } else {
                   console.log('error');
                   res.send("error");
               }
-              console.log("########LOAD IMAGE######");
+              // console.log("########LOAD IMAGE######");
 
-              data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
-              document.body.appendChild(data_img);
+              // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
+              // document.body.appendChild(data_img);
 
               console.log("########SHOW IMAGE######");
 
