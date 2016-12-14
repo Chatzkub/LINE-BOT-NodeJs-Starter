@@ -42,7 +42,7 @@ router.post('/',function(req, res){
 
           headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU='
+            'Authorization': getAuthorization()
           };
 
           console.log(JSON.stringify(data));
@@ -70,7 +70,7 @@ router.post('/',function(req, res){
 
         } else if(req.body.events[i].message.type == 'image') {
                     headers = {
-                        'Authorization': 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU='
+                        'Authorization': getAuthorization()
                     };
 
                     options = {
