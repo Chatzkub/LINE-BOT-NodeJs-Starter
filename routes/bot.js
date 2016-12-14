@@ -133,6 +133,10 @@ function getAuthorization(){
   return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
 }
 
+router.get('/ABC', function(req, res, next) {
+    res.send('ABC');
+});
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.send(test);
