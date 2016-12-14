@@ -16,6 +16,9 @@ app.use(bodyParser.urlencoded({
 
 router.post('/',function(req, res){
   console.log('call function***********************');
+  console.log(getAuthorization());
+
+  
   if (req.body != undefined) {
     //console.log('request body: ' + JSON.stringify(req.body));
 
@@ -44,7 +47,6 @@ router.post('/',function(req, res){
 
           console.log(JSON.stringify(data));
           console.log("######data.messages########");
-          console.log(JSON.stringify(data.messages));
           console.log(JSON.stringify(data.messages[0].text));
           console.log("########end######");
 
@@ -67,7 +69,16 @@ router.post('/',function(req, res){
           });
 
         } else if(req.body.events[i].message.type == 'image') {
-         
+                    headers = {
+                        'Authorization': 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU='
+                    };
+
+                    options = {
+                        url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
+                        headers: headers,
+                        encoding: null,
+                        method: 'GET'
+                    };
         }
       }
     }
@@ -76,6 +87,10 @@ router.post('/',function(req, res){
   }
 });
 
+
+function getAuthorization(){
+  return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
+}
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
