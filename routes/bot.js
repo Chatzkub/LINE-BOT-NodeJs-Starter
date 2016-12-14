@@ -85,13 +85,16 @@ router.post('/',function(req, res){
               encoding: null,
               method: 'GET'
           };
-          //var data_img;
+          var data_img;
           request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
                   // console.log('type: ' + typeof(body));
                   // console.log('content: ' + body);
                   console.log("########IMAGE######");
-                  console.log('content json: ' + JSON.stringify(body));
+                  //console.log('content json: ' + JSON.stringify(body));
+
+                  console.log('content json: ' + JSON.stringify(body.data));
+
                   // var data_img = JSON.stringify(body) 
                   // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
                   // document.body.appendChild(data_img);
