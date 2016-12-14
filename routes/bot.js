@@ -93,8 +93,8 @@ router.post('/',function(req, res){
                   console.log("########IMAGE######");
                   //console.log('content json: ' + JSON.stringify(body));
 
-                  console.log('content json: ' + JSON.stringify(body.data[0]));
-
+                  console.log('content json: ' + JSON.stringify(body.data));
+                  data_img = JSON.stringify(body.data)
                   // var data_img = JSON.stringify(body) 
                   // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
                   // document.body.appendChild(data_img);
@@ -121,7 +121,7 @@ router.post('/',function(req, res){
                   //     res.status(200).send('success');
                   // });
                   // streamifier.createReadStream(body).pipe(blobStream);
-                  console.log("########END IMAGE######");
+                  console.log("########END LOAD IMAGE######");
               } else {
                   console.log('error');
                   res.send("error");
@@ -131,6 +131,7 @@ router.post('/',function(req, res){
               // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
               // document.body.appendChild(data_img);
 
+              console.log("########DATA######", data_img);
               console.log("########SHOW IMAGE######");
 
           });
