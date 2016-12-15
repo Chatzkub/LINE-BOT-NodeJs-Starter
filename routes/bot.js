@@ -114,7 +114,7 @@ router.post('/',function(req, res){
                       };
 
               var headers = {
-                  'Content-Type': 'multipart/form-data'
+                  'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
                 };
 
               var formData = {
@@ -125,7 +125,6 @@ router.post('/',function(req, res){
                 'photo_file': body
 
               };
-              console.log("########name######" + body.name);
 
               console.log("########formData######" + formData);
 
