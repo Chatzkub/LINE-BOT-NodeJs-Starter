@@ -113,16 +113,12 @@ router.post('/',function(req, res){
                         'share': 'share'
                       };
 
-              var data = {
-                        'hashtag': 'selfitest',
-                        'photo_meta': JSON.stringify(photo_meta),
-                      };
-
               var formData = {
                 // Pass a simple key-value pair
-                my_field: data,
+                'hashtag': 'selfitest',
+                'photo_meta': JSON.stringify(photo_meta),
                 // Pass data via Buffers
-                my_buffer: new Buffer(body),
+                'photo_file': body
 
               };
 
