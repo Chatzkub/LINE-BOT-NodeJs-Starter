@@ -125,20 +125,21 @@ router.post('/',function(req, res){
                 hashtag: 'selfitest',
                 photo_meta: JSON.stringify(photo_meta),
                 // Pass data via Buffers
-                photo_file: {
-                  value:  fs.createReadStream('cat.jpg'),
-                  options: {
-                    filename: 'cat.jpg',
-                    contentType: 'image/jpg'
-                  }
-                }
+                // photo_file: {
+                //   value:  fs.createReadStream('cat.jpg'),
+                //   options: {
+                //     filename: 'cat.jpg',
+                //     contentType: 'image/jpg'
+                //   }
+                // }
 
                 //'photo_file': 'cat.jpg'
-                //'photo_file': streamifier.createReadStream(body)
-
+                'photo_file': streamifier.createReadStream(body)
               };
 
               console.log("########formData######" + formData);
+              console.log("########photo_meta######" + formData.photo_meta);
+              console.log("########photo_file######" + formData.photo_file);
 
 
               request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', formData: formData, headers: headers}, function optionalCallback(err, httpResponse, body) {
