@@ -139,7 +139,7 @@ router.post('/',function(req, res){
                 // }
 
                 //'photo_file': 'cat.jpg'
-                photo_file: streamifier.createReadStream(body)
+                //photo_file: streamifier.createReadStream(body)
                 // photo_file: streamifier.createReadStream(img_byte_array)
               };
 
