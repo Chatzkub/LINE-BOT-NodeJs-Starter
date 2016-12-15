@@ -95,7 +95,8 @@ router.post('/',function(req, res){
                   console.log("########GET IMAGE######");
                   var body_json_str = JSON.stringify(body);
                   var body_json = JSON.parse(body_json_str);
-                  console.log("body_json.data: " + body_json.data);
+                  var img_byte_array = body_json.data;
+                  console.log(img_byte_array);
 
                   //console.log('content json: ' + JSON.stringify(body));
                   //console.log('content json: ' + JSON.stringify(body));
