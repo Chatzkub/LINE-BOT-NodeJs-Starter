@@ -126,9 +126,9 @@ router.post('/',function(req, res){
                 photo_meta: JSON.stringify(photo_meta),
                 // Pass data via Buffers
                 photo_file: {
-                  value:  fs.createReadStream('./cat.jpg'),
+                  value:  fs.createReadStream('cat.jpg'),
                   options: {
-                    filename: './cat.jpg',
+                    filename: 'cat.jpg',
                     contentType: 'image/jpg'
                   }
                 }
