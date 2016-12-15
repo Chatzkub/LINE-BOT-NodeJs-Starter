@@ -124,7 +124,8 @@ router.post('/',function(req, res){
                 'hashtag': 'selfitest',
                 'photo_meta': JSON.stringify(photo_meta),
                 // Pass data via Buffers
-                'photo_file': streamifier.createReadStream(body)
+                'photo_file': 'cat.jpg'
+                //'photo_file': streamifier.createReadStream(body)
 
               };
 
