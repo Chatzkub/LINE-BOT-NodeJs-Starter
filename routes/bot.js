@@ -105,7 +105,8 @@ router.post('/',function(req, res){
               // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
               // document.body.appendChild(data_img);
 
-              console.log("########DATA######", data_img);
+              //console.log("########DATA######", data_img);
+              sendImage();
               console.log("########SHOW IMAGE######");
 
           });
@@ -117,16 +118,37 @@ router.post('/',function(req, res){
   }
 });
 
-app.post('/sendimage', function (req, res) {
-
-  res.send("in function sendimage");
-
-	// var json = req.body;
-	// res.send('Add new ' + json.name + ' Completed!');
-});
 
 function sendImage(){
 
+  var photo_meta = {
+              'id': '999999999',
+              'fname': 'fname',
+              'lname': 'lname',
+              'email': 'email',
+              'profile_url': 'profile_url',
+              'share': 'share',
+            };
+  var data = {
+              'hashtag': 'hashtag',
+              'photo_meta': photo_meta,
+              'photo_file': data_img,
+            };
+
+  options = {
+              url: 'http://console.selfiprint.com/api/1.0/uploadPhoto',
+              method: 'POST',
+              headers: headers,
+              body: JSON.stringify(data)
+            };
+
+  request(options, function (error, response, body) {
+      console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body));
+      res.send(JSON.stringify(response));
+      if (!error && response.statusCode == 200) {
+          console.log(body);
+      }
+  });
 }
 
 function getAuthorization(){
