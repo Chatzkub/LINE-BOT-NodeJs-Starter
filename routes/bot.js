@@ -104,7 +104,6 @@ router.post('/',function(req, res){
               //console.log("########DATA######", data_img);
 
               console.log("########SHOW IMAGE######");
-              //sendImage();
 
               var photo_meta = {
                         'id': '999999999',
@@ -114,38 +113,70 @@ router.post('/',function(req, res){
                         'profile_url': 'profile_url',
                         'share': 'share'
                       };
+              var data = {
+                        'hashtag': 'selfitest',
+                        'photo_meta': photo_meta,
+                        'photo_file': data_img
+                      };
+
+              var formData = {
+                // Pass a simple key-value pair
+                my_field: data,
+                // Pass data via Buffers
+                my_buffer: new Buffer(data_img),
+
+              };
+
+              console.log("########formData######" + formData);
+
+
+              request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', formData: formData}, function optionalCallback(err, httpResponse, body) {
+                if (err) {
+                  return console.error('upload failed:', err);
+                }
+                console.log('Upload successful!  Server responded with:', body);
+              });
+
+
+              // var photo_meta = {
+              //           'id': '999999999',
+              //           'fname': 'fname',
+              //           'lname': 'lname',
+              //           'email': 'email',
+              //           'profile_url': 'profile_url',
+              //           'share': 'share'
+              //         };
               // var data = {
               //           'hashtag': 'selfitest',
               //           'photo_meta': photo_meta,
               //           'photo_file': data_img
               //         };
-              var data = {
-                        'hashtag': 'selfitest',
-                        'photo_meta': 'photo_meta',
-                        'photo_file': 'photo_file'
-                      };
-              console.log("########DATA######"+ data);
-              //http://console.selfiprint.com/api/1.0/uploadPhoto
-              options = {
-                        url: '10.20.22.79:1337/api/1.0/uploadPhoto',
-                        method: 'POST',
-                        body: JSON.stringify(data)
-                      };
 
-              request(options, function (error, response, body) {
-                console.log("########RESPOND######");
-                // console.log("statusCode " + response.statusCode);
-                // console.log("respond " + JSON.stringify(response));
-                // console.log("error " + error);
-                // console.log("body " + JSON.stringify(body));
-                console.log("########END RESPOND######");
+                     
 
-                res.send(JSON.stringify(response));
-                if (!error && response.statusCode == 200) {
-                    console.log("########YEAH######"+ data);
-                    console.log(body);
-                }
-              });
+
+              // console.log("########DATA######"+ data);
+              // //http://console.selfiprint.com/api/1.0/uploadPhoto
+              // options = {
+              //           url: '10.20.22.79:1337/api/1.0/uploadPhoto',
+              //           method: 'POST',
+              //           body: JSON.stringify(data)
+              //         };
+
+              // request(options, function (error, response, body) {
+              //   console.log("########RESPOND######");
+              //   // console.log("statusCode " + response.statusCode);
+              //   // console.log("respond " + JSON.stringify(response));
+              //   // console.log("error " + error);
+              //   // console.log("body " + JSON.stringify(body));
+              //   console.log("########END RESPOND######");
+
+              //   res.send(JSON.stringify(response));
+              //   if (!error && response.statusCode == 200) {
+              //       console.log("########YEAH######"+ data);
+              //       console.log(body);
+              //   }
+              // });
           });
         }
       }
