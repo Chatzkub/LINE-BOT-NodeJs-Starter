@@ -173,7 +173,6 @@ function sendImage(){
   options = {
               url: 'http://console.selfiprint.com/api/1.0/uploadPhoto',
               method: 'POST',
-              headers: headers,
               body: JSON.stringify(data)
             };
 
