@@ -94,7 +94,6 @@ router.post('/',function(req, res){
                   console.log("########GET IMAGE######");
                   //console.log('content json: ' + JSON.stringify(body));
                   //console.log('content json: ' + JSON.stringify(body));
-                  data_img = JSON.stringify(body)
                   console.log("########END LOAD IMAGE######");
               } else {
                   console.log('error');
@@ -117,14 +116,13 @@ router.post('/',function(req, res){
               var data = {
                         'hashtag': 'selfitest',
                         'photo_meta': JSON.stringify(photo_meta),
-                        'photo_file': data_img
                       };
 
               var formData = {
                 // Pass a simple key-value pair
                 my_field: data,
                 // Pass data via Buffers
-                my_buffer: new Buffer(data_img),
+                my_buffer: new Buffer(body),
 
               };
 
