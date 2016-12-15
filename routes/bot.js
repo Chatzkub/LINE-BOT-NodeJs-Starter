@@ -121,10 +121,18 @@ router.post('/',function(req, res){
 
               var formData = {
                 // Pass a simple key-value pair
-                'hashtag': 'selfitest',
-                'photo_meta': JSON.stringify(photo_meta),
+                hashtag: 'selfitest',
+                photo_meta: JSON.stringify(photo_meta),
                 // Pass data via Buffers
-                'photo_file': 'cat.jpg'
+                photo_file: {
+                  value:  fs.createReadStream('cat.jpg'),
+                  options: {
+                    filename: 'cat.jpg',
+                    contentType: 'image/jpg'
+                  }
+                }
+
+                //'photo_file': 'cat.jpg'
                 //'photo_file': streamifier.createReadStream(body)
 
               };
