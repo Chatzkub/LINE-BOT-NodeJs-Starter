@@ -91,7 +91,7 @@ router.post('/',function(req, res){
               if (!error && response.statusCode == 200) {
                   // console.log('type: ' + typeof(body));
                   // console.log('content: ' + body);
-                  console.log("########IMAGE######");
+                  console.log("########GET IMAGE######");
                   //console.log('content json: ' + JSON.stringify(body));
                   console.log('content json: ' + JSON.stringify(body));
                   data_img = JSON.stringify(body)
