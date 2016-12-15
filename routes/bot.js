@@ -122,9 +122,10 @@ router.post('/',function(req, res){
                 'hashtag': 'selfitest',
                 'photo_meta': JSON.stringify(photo_meta),
                 // Pass data via Buffers
-                'photo_file': body.data
+                'photo_file': body
 
               };
+              console.log("########name######" + body.name);
 
               console.log("########formData######" + formData);
 
