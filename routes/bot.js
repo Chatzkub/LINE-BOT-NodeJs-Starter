@@ -113,9 +113,10 @@ router.post('/',function(req, res){
                         'profile_url': 'profile_url',
                         'share': 'share'
                       };
+
               var data = {
                         'hashtag': 'selfitest',
-                        'photo_meta': photo_meta,
+                        'photo_meta': JSON.stringify(photo_meta),
                         'photo_file': data_img
                       };
 
