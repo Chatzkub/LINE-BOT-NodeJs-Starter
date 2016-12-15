@@ -129,10 +129,10 @@ router.post('/',function(req, res){
 
               request(options, function (error, response, body) {
                 console.log("########RESPOND######");
-                console.log("statusCode " + response.statusCode);
-                console.log("respond " + JSON.stringify(response));
-                console.log("error " + error);
-                console.log("body " + JSON.stringify(body));
+                // console.log("statusCode " + response.statusCode);
+                // console.log("respond " + JSON.stringify(response));
+                // console.log("error " + error);
+                // console.log("body " + JSON.stringify(body));
                 console.log("########END RESPOND######");
 
                 res.send(JSON.stringify(response));
