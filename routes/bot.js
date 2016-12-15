@@ -90,8 +90,8 @@ router.post('/',function(req, res){
 
           request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
-                  // console.log('type: ' + typeof(body));
-                  // console.log('content: ' + body);
+                  console.log('type: ' + typeof(body));
+                  //console.log('content: ' + body);
                   console.log("########GET IMAGE######");
                   //console.log('content json: ' + JSON.stringify(body));
                   //console.log('content json: ' + JSON.stringify(body));
@@ -101,7 +101,6 @@ router.post('/',function(req, res){
                   res.send("error");
               }
               // console.log("########LOAD IMAGE######");
-              //console.log("########DATA######", data_img);
 
               console.log("########SHOW IMAGE######");
 
@@ -134,7 +133,7 @@ router.post('/',function(req, res){
                 // }
 
                 //'photo_file': 'cat.jpg'
-                'photo_file': streamifier.createReadStream(body)
+                photo_file: streamifier.createReadStream(body)
               };
 
               console.log("########formData######" + formData);
