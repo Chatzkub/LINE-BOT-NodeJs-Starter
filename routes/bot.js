@@ -101,18 +101,11 @@ router.post('/',function(req, res){
                   res.send("error");
               }
               // console.log("########LOAD IMAGE######");
-
-              // data_img.src = 'data:image/jpeg;base64,' + btoa('your-binary-data');
-              // document.body.appendChild(data_img);
-
               //console.log("########DATA######", data_img);
 
               console.log("########SHOW IMAGE######");
               //sendImage();
 
-              // if (data_img != 0) {
-
-              // }
               var photo_meta = {
                         'id': '999999999',
                         'fname': 'fname',
@@ -131,7 +124,6 @@ router.post('/',function(req, res){
               options = {
                         url: 'http://console.selfiprint.com/api/1.0/uploadPhoto',
                         method: 'POST',
-                        headers: headers,
                         body: JSON.stringify(data)
                       };
 
