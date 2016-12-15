@@ -115,14 +115,14 @@ router.post('/',function(req, res){
                         'share': 'share'
                       };
               var data = {
-                        'hashtag': 'hashtag',
+                        'hashtag': 'selfitest',
                         'photo_meta': photo_meta,
                         'photo_file': data_img
                       };
               console.log("########DATA######"+ data);
-
+              //http://console.selfiprint.com/api/1.0/uploadPhoto
               options = {
-                        url: 'http://console.selfiprint.com/api/1.0/uploadPhoto',
+                        url: '10.20.22.79:1337/api/1.0/uploadPhoto',
                         method: 'POST',
                         body: JSON.stringify(data)
                       };
