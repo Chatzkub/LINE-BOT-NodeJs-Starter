@@ -13,7 +13,7 @@ var data_img;
 //   keyFilename: '/app/testfacebook-37d35-firebase-adminsdk-xjhtw-a095d994f6.json'
 // });
 
-// var streamifier = require('streamifier');
+var streamifier = require('streamifier');
 
 // var bucket = gcs.bucket('testfacebook-37d35.appspot.com');
 
@@ -104,6 +104,8 @@ router.post('/',function(req, res){
 
               console.log("########SHOW IMAGE######");
 
+              //var bufferStream = new stream.PassThrough();
+
               var photo_meta = {
                         'id': '999999999',
                         'fname': 'fname',
@@ -122,7 +124,7 @@ router.post('/',function(req, res){
                 'hashtag': 'selfitest',
                 'photo_meta': JSON.stringify(photo_meta),
                 // Pass data via Buffers
-                'photo_file': body
+                'photo_file': streamifier.createReadStream(body)
 
               };
 
