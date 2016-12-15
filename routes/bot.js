@@ -113,6 +113,10 @@ router.post('/',function(req, res){
                         'share': 'share'
                       };
 
+              var headers = {
+                  'Content-Type': 'multipart/form-data'
+                };
+
               var formData = {
                 // Pass a simple key-value pair
                 'hashtag': 'selfitest',
@@ -125,7 +129,7 @@ router.post('/',function(req, res){
               console.log("########formData######" + formData);
 
 
-              request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', formData: formData}, function optionalCallback(err, httpResponse, body) {
+              request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', formData: formData, headers: headers}, function optionalCallback(err, httpResponse, body) {
                 if (err) {
                   return console.error('upload failed:', err);
                 }
