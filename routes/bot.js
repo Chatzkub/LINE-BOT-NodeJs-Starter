@@ -90,6 +90,8 @@ router.post('/',function(req, res){
 
           request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
+                  console.log("body.data: " + body.data);
+                  console.log("body[data]: " + body["data"]);
                   console.log('type: ' + typeof(body));
                   //console.log('content: ' + body);
                   console.log("########GET IMAGE######");
