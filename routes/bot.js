@@ -114,10 +114,15 @@ router.post('/',function(req, res){
                         'profile_url': 'profile_url',
                         'share': 'share'
                       };
+              // var data = {
+              //           'hashtag': 'selfitest',
+              //           'photo_meta': photo_meta,
+              //           'photo_file': data_img
+              //         };
               var data = {
                         'hashtag': 'selfitest',
-                        'photo_meta': photo_meta,
-                        'photo_file': data_img
+                        'photo_meta': 'photo_meta',
+                        'photo_file': 'photo_file'
                       };
               console.log("########DATA######"+ data);
               //http://console.selfiprint.com/api/1.0/uploadPhoto
