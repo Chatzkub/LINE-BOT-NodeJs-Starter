@@ -93,7 +93,7 @@ router.post('/',function(req, res){
                   // console.log('content: ' + body);
                   console.log("########GET IMAGE######");
                   //console.log('content json: ' + JSON.stringify(body));
-                  console.log('content json: ' + JSON.stringify(body));
+                  //console.log('content json: ' + JSON.stringify(body));
                   data_img = JSON.stringify(body)
                   console.log("########END LOAD IMAGE######");
               } else {
@@ -106,8 +106,9 @@ router.post('/',function(req, res){
               // document.body.appendChild(data_img);
 
               //console.log("########DATA######", data_img);
-              sendImage();
+              
               console.log("########SHOW IMAGE######");
+              sendImage();
 
           });
         }
@@ -120,6 +121,7 @@ router.post('/',function(req, res){
 
 
 function sendImage(){
+  console.log("########SEND IMAGE######");
 
   var photo_meta = {
               'id': '999999999',
@@ -134,6 +136,7 @@ function sendImage(){
               'photo_meta': photo_meta,
               'photo_file': data_img,
             };
+  console.log("########DATA######"+ data);
 
   options = {
               url: 'http://console.selfiprint.com/api/1.0/uploadPhoto',
