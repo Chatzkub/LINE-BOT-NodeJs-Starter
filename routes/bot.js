@@ -7,6 +7,7 @@ var request = require('request');
 var app = express();
 var bodyParser = require('body-parser');
 var data_img;
+var fs = require('fs');
 
 // var gcs = require('@google-cloud/storage')({
 //   projectId: '<projectID>',
