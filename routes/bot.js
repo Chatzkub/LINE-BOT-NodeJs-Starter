@@ -93,7 +93,7 @@ router.post('/',function(req, res){
               if (!error && response.statusCode == 200) {
                   // console.log('type: ' + typeof(body));
                   console.log("#######BODY######");
-                  console.log('content: ' + JSON.stringify(body));
+                  //console.log('content: ' + JSON.stringify(body));
                   console.log("########GET IMAGE######");
                   // var body_json_str = JSON.stringify(body);
                   // var body_json = JSON.parse(body_json_str);
@@ -111,7 +111,7 @@ router.post('/',function(req, res){
 
               console.log("########SHOW IMAGE######");
 
-
+              console.log("########GET MID######");
               // get Mid
               var options = {
                   url: 'https://api.line.me/v1/oauth/verify',
@@ -126,6 +126,7 @@ router.post('/',function(req, res){
                       console.log('content: ' + JSON.stringify(body));
                   }
               }
+              console.log("########END MID######");
 
 
 
