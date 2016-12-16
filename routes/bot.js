@@ -108,6 +108,28 @@ router.post('/',function(req, res){
                   res.send("error");
               }
 
+
+              console.log("########GET MID######");
+
+              // get Mid
+              var options = {
+                  url: 'https://api.line.me/v1/oauth/verify',
+                  headers: headers
+              };
+
+            request(options, function (error, response, body) {
+                  if (!error && response.statusCode == 200) {
+                      //res.send(body);
+                      //mids = res.send(body.mid);
+                      var b = JSON.parse(body)
+                      console.log('mid: ' + b.mid);
+                      console.log('content: ' + JSON.stringify(body));
+                  }else {
+                      console.log('error: ' + error);
+                  }
+              });
+              console.log("########END MID######");
+
               //console.log("########SHOW IMAGE######");
               //send image
               // var photo_meta = {
@@ -144,28 +166,6 @@ router.post('/',function(req, res){
               // });
               //end send image
           });
-
-
-          console.log("########GET MID######");
-
-          // get Mid
-          var options = {
-              url: 'https://api.line.me/v1/oauth/verify',
-              headers: headers
-          };
-
-          function callback(error, response, body) {
-              if (!error && response.statusCode == 200) {
-                  //res.send(body);
-                  //mids = res.send(body.mid);
-                  var b = JSON.parse(body)
-                  console.log('mid: ' + b.mid);
-                  console.log('content: ' + JSON.stringify(body));
-              }else {
-                  console.log('error: ' + error);
-              }
-          }
-          console.log("########END MID######");
         }
       }
     }
