@@ -128,7 +128,7 @@ router.post('/',function(req, res){
 
                         console.log("########GET PROFILE URL######");
                         var data = {
-                          'mid' : JSON.stringify(d.mid)
+                          'mid' : d.mid
                         };
 
                         var options = {
