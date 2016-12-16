@@ -189,6 +189,11 @@ function getProfileURL(event, body ,res){
 
   var image = body;
   console.log("########GET PROFILE URL######");
+
+  var headers = {
+      'Authorization': getAuthorization()
+  };
+
   var options = {
     url: 'https://api.line.me/v2/bot/profile/' + event.source.userId,
     headers: headers,
