@@ -77,6 +77,7 @@ router.post('/',function(req, res){
 
         } else if(req.body.events[i].message.type == 'image') {
           
+          console.log("########CALL GET IMAGE######");
           getImage(options, req.body.events[i], res);
 
         }
@@ -147,7 +148,7 @@ function getImage(options, event, res) {
           // console.log('type: ' + typeof(body));
           //console.log("#######BODY######");
           //console.log('content: ' + JSON.stringify(body));
-          console.log("########GET IMAGE######");
+          console.log("########RESPONSE IMAGE######");
           // var body_json_str = JSON.stringify(body);
           // var body_json = JSON.parse(body_json_str);
           // img_byte_array = body_json.data;
