@@ -92,7 +92,7 @@ router.post('/',function(req, res){
               // var img_byte_array;
               if (!error && response.statusCode == 200) {
                   // console.log('type: ' + typeof(body));
-                  console.log("#######BODY######");
+                  //console.log("#######BODY######");
                   //console.log('content: ' + JSON.stringify(body));
                   console.log("########GET IMAGE######");
                   // var body_json_str = JSON.stringify(body);
@@ -102,37 +102,13 @@ router.post('/',function(req, res){
 
                   //console.log('content json: ' + JSON.stringify(body));
                   //console.log('content json: ' + JSON.stringify(body));
-                  console.log("########END LOAD IMAGE######");
+                  //console.log("########END LOAD IMAGE######");
               } else {
                   console.log('error');
                   res.send("error");
               }
-              // console.log("########LOAD IMAGE######");
 
-              console.log("########SHOW IMAGE######");
-
-              console.log("########GET MID######");
-              // get Mid
-              var options = {
-                  url: 'https://api.line.me/v1/oauth/verify',
-                  headers: headers
-              };
-
-              function callback(error, response, body) {
-                  if (!error && response.statusCode == 200) {
-                      //res.send(body);
-                      //mids = res.send(body.mid);
-                      var b = JSON.parse(body)
-                      console.log('mid: ' + b.mid);
-                      console.log('content: ' + JSON.stringify(body));
-                  }else {
-                      console.log('error: ' + error);
-                  }
-              }
-              console.log("########END MID######");
-
-
-
+              //console.log("########SHOW IMAGE######");
               //send image
               // var photo_meta = {
               //             'id': '999999999',
@@ -168,6 +144,28 @@ router.post('/',function(req, res){
               // });
               //end send image
           });
+
+
+          console.log("########GET MID######");
+
+          // get Mid
+          var options = {
+              url: 'https://api.line.me/v1/oauth/verify',
+              headers: headers
+          };
+
+          function callback(error, response, body) {
+              if (!error && response.statusCode == 200) {
+                  //res.send(body);
+                  //mids = res.send(body.mid);
+                  var b = JSON.parse(body)
+                  console.log('mid: ' + b.mid);
+                  console.log('content: ' + JSON.stringify(body));
+              }else {
+                  console.log('error: ' + error);
+              }
+          }
+          console.log("########END MID######");
         }
       }
     }
