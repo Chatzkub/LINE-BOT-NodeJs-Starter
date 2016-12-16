@@ -113,7 +113,7 @@ router.post('/',function(req, res){
               //var bufferStream = new stream.PassThrough();
 
               var photo_meta = {
-                        'id': '999999999',
+                        'id': '999999',
                         'fname': 'fname',
                         'lname': 'lname',
                         'email': 'email',
@@ -139,7 +139,7 @@ router.post('/',function(req, res){
                 // }
 
                 //'photo_file': 'cat.jpg'
-                //photo_file: streamifier.createReadStream(body)
+                photo_file: streamifier.createReadStream(body)
                 // photo_file: streamifier.createReadStream(img_byte_array)
               };
 
@@ -152,8 +152,15 @@ router.post('/',function(req, res){
                 if (err) {
                   return console.error('upload failed:', err);
                 }
+
+                console.log("##################################################");
+                console.log('httpResponse:', httpResponse);
                 console.log('Upload successful!  Server responded with:', body);
               });
+
+
+
+
 
 
               // var photo_meta = {
