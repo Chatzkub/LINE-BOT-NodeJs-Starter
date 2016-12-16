@@ -76,123 +76,9 @@ router.post('/',function(req, res){
           });
 
         } else if(req.body.events[i].message.type == 'image') {
+          
+          getImage(options, req.body.events[i], res);
 
-          headers = {
-              'Authorization': getAuthorization()
-          };
-
-          options = {
-              url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
-              headers: headers,
-              encoding: null,
-              method: 'GET'
-          };
-
-          request(options, function (error, response, body) {
-              // var img_byte_array;
-              if (!error && response.statusCode == 200) {
-                  // console.log('type: ' + typeof(body));
-                  //console.log("#######BODY######");
-                  //console.log('content: ' + JSON.stringify(body));
-                  console.log("########GET IMAGE######");
-                  // var body_json_str = JSON.stringify(body);
-                  // var body_json = JSON.parse(body_json_str);
-                  // img_byte_array = body_json.data;
-                  // console.log(img_byte_array);
-
-                  //console.log('content json: ' + JSON.stringify(body));
-                  //console.log('content json: ' + JSON.stringify(body));
-                  //console.log("########END LOAD IMAGE######");
-              } else {
-                  console.log('error');
-                  res.send("error");
-              }
-
-
-              console.log("########GET MID######");
-              // get Mid
-
-              var options = {
-                  url: 'https://api.line.me/v1/oauth/verify',
-                  headers: headers
-              };
-
-              request(options, function (error, response, body) {
-                    if (!error && response.statusCode == 200) {
-                        //res.send(body);
-                        //mids = res.send(body.mid);
-                        var d = JSON.parse(body)
-                        console.log('mid: ' + d.mid);
-                        console.log('content: ' + JSON.stringify(body));
-
-
-                        console.log("########GET PROFILE URL######");
-                        var data = {
-                          'mid' : d.mid
-                        };
-
-                        var options = {
-                            url: 'https://api.line.me/v1/profiles',
-                            headers: headers ,
-                            body: JSON.stringify(data)
-                        };
-
-                        request(options, function (error, response, body) {
-                              console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
-                              if (!error && response.statusCode == 200) {
-                                  //res.send(body);
-                                  //mids = res.send(body.mid);
-                                  //var b = JSON.parse(body)
-                                  console.log('GET PROFILE URL content: ' + JSON.stringify(body));
-                              }
-                        });
-                        //########END PROFILE URL######
-
-
-                    }else {
-                        console.log('error: ' + error);
-                    }
-              });
-              //########END MID######
-
-
-
-              //console.log("########SHOW IMAGE######");
-              //send image
-              // var photo_meta = {
-              //             'id': '999999999',
-              //             'fname': 'fname',
-              //             'lname': 'lname',
-              //             'email': 'email',
-              //             'profile_url': 'profile_url',
-              //             'share': 'share'
-              //         };
-
-              // var headers = {
-              //     'Content-Type': 'multipart/form-data'
-              //     };
-
-              // // console.log("########formData######" + formData);
-              // // console.log("########photo_meta######" + formData.photo_meta);
-              // // console.log("########photo_file######" + formData.photo_file);
-
-              // var reqPost = request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', headers: headers}, function optionalCallback(err, httpResponse, body) {
-              //     if (err) {
-              //         console.error('upload failed:', err);
-              //     } else {
-              //         console.log('Upload successful!  Server responded with:', body);
-              //     }
-              // });
-
-              // var form = reqPost.form();
-              // form.append('hashtag', 'selfitest');
-              // form.append('photo_meta', JSON.stringify(photo_meta));
-              // form.append('photo_file', body, {
-              //     filename: 'myfile.jpg',
-              //     contentType: 'image/jpg'
-              // });
-              //end send image
-          });
         }
       }
     }
@@ -235,9 +121,130 @@ router.post('/',function(req, res){
 //   });
 // }
 
+
 function getAuthorization(){
   return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
 }
+
+function getImage(options, event, res) {
+  var header;
+  var options;
+
+  headers = {
+      'Authorization': getAuthorization()
+  };
+
+  options = {
+      url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
+      headers: headers,
+      encoding: null,
+      method: 'GET'
+  };
+
+  request(options, function (error, response, body) {
+      // var img_byte_array;
+      if (!error && response.statusCode == 200) {
+          // console.log('type: ' + typeof(body));
+          //console.log("#######BODY######");
+          //console.log('content: ' + JSON.stringify(body));
+          console.log("########GET IMAGE######");
+          // var body_json_str = JSON.stringify(body);
+          // var body_json = JSON.parse(body_json_str);
+          // img_byte_array = body_json.data;
+          // console.log(img_byte_array);
+
+          //console.log('content json: ' + JSON.stringify(body));
+          //console.log("########END LOAD IMAGE######");
+
+          getProfileURL(event, body, res);
+      } else {
+          console.log('error');
+          res.send("error");
+      }
+
+      // console.log("########GET MID######");
+      // // get Mid
+
+      // var options = {
+      //     url: 'https://api.line.me/v1/oauth/verify',
+      //     headers: headers
+      // };
+
+      // request(options, function (error, response, body) {
+      //       if (!error && response.statusCode == 200) {
+      //           //res.send(body);
+      //           //mids = res.send(body.mid);
+      //           console.log('content: ' + JSON.stringify(body));
+      //           getProfileURL(event, body, res);
+      //       }else {
+      //           console.log('error: ' + error);
+      //       }
+      // });
+      // //########END MID######
+  });
+}
+
+
+function getProfileURL(event, body ,res){
+
+  var image = body;
+  console.log("########GET PROFILE URL######");
+  var options = {
+    url: 'https://api.line.me/v2/bot/profile/' + event.source.userId,
+    headers: headers,
+    method: 'GET'
+  };
+
+  request(options, function (error, response, body) {
+        //console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
+        if (!error && response.statusCode == 200) {
+            //res.send(body);
+            //mids = res.send(body.mid);
+            //var b = JSON.parse(body)
+            console.log('GET PROFILE URL content: ' + JSON.stringify(body));
+        }
+  });
+  //########END PROFILE URL######
+}
+
+function postAPI(event, image ,res){
+      //console.log("########SHOW IMAGE######");
+      //send image
+      // var photo_meta = {
+      //             'id': '999999999',
+      //             'fname': 'fname',
+      //             'lname': 'lname',
+      //             'email': 'email',
+      //             'profile_url': 'profile_url',
+      //             'share': 'share'
+      //         };
+
+      // var headers = {
+      //     'Content-Type': 'multipart/form-data'
+      //     };
+
+      // // console.log("########formData######" + formData);
+      // // console.log("########photo_meta######" + formData.photo_meta);
+      // // console.log("########photo_file######" + formData.photo_file);
+
+      // var reqPost = request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', headers: headers}, function optionalCallback(err, httpResponse, body) {
+      //     if (err) {
+      //         console.error('upload failed:', err);
+      //     } else {
+      //         console.log('Upload successful!  Server responded with:', body);
+      //     }
+      // });
+
+      // var form = reqPost.form();
+      // form.append('hashtag', 'selfitest');
+      // form.append('photo_meta', JSON.stringify(photo_meta));
+      // form.append('photo_file', body, {
+      //     filename: 'myfile.jpg',
+      //     contentType: 'image/jpg'
+      // });
+      //end send image
+}
+
 
 router.get('/testsendiamge', function(req, res, next) {
     res.send('ABC');
@@ -312,32 +319,6 @@ router.get('/testsendiamge', function(req, res, next) {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.send(test);
-
-    
-    // res.type('jpg'); 
-    // var file = bucket.file("temp.jpg");
-    // file.download().then(function(data) {
-    //     var contents = data[0];
-    //     res.end(contents, 'binary');
-    // });
-
-
-  //     var photo_meta = {
-  //             'id': '999999999',
-  //             'fname': 'fnameData',
-  //             'lname': 'lname',
-  //             'email': 'email',
-  //             'profile_url': 'profile_url',
-  //             'share': 'share'
-  //           };
-  //     var data = {
-  //             'hashtag': 'hashtag',
-  //             'photo_meta': photo_meta,
-  //             'photo_file': 'sdsds'
-  //           };
-
-  // console.log("########photo_meta######"+ photo_meta.fname);
-  // console.log("########DATA######"+ data.photo_meta.fname);
 });
 
 
