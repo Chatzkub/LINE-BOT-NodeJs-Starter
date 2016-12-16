@@ -193,6 +193,7 @@ function getProfileURL(event, body ,res){
   var headers = {
       'Authorization': getAuthorization()
   };
+  console.log("########userId######"+ event.source.userId);
 
   var options = {
     url: 'https://api.line.me/v2/bot/profile/' + event.source.userId,
