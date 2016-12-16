@@ -78,7 +78,19 @@ router.post('/',function(req, res){
         } else if(req.body.events[i].message.type == 'image') {
           
           console.log("########CALL GET IMAGE######");
-          //getImage(options, req.body.events[i], res);
+
+          headers = {
+              'Authorization': getAuthorization()
+          };
+
+          options = {
+              url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
+              headers: headers,
+              encoding: null,
+              method: 'GET'
+          };
+
+          getImage(options, req.body.events[i], res);
 
         }
       }
@@ -128,19 +140,6 @@ function getAuthorization(){
 }
 
 function getImage(options, event, res) {
-  var header;
-  var options;
-
-  headers = {
-      'Authorization': getAuthorization()
-  };
-
-  options = {
-      url: 'https://api.line.me/v2/bot/message/' + req.body.events[i].message.id + '/content',
-      headers: headers,
-      encoding: null,
-      method: 'GET'
-  };
 
   request(options, function (error, response, body) {
       // var img_byte_array;
