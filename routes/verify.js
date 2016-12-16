@@ -24,8 +24,8 @@ router.get('/', function(req, res, next) {
             res.send(body);
             //mids = res.send(body.mid);
 
-            console.log('content: ' + body[mids]);
-            mids = JSON.stringify(data)
+            //console.log('content: ' + body[mids]);
+            //mids = JSON.stringify(data)
         }
     }
 

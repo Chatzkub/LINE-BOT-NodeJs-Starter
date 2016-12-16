@@ -78,7 +78,7 @@ router.post('/',function(req, res){
         } else if(req.body.events[i].message.type == 'image') {
           
           console.log("########CALL GET IMAGE######");
-          getImage(options, req.body.events[i], res);
+          //getImage(options, req.body.events[i], res);
 
         }
       }
