@@ -92,7 +92,8 @@ router.post('/',function(req, res){
               // var img_byte_array;
               if (!error && response.statusCode == 200) {
                   // console.log('type: ' + typeof(body));
-                  //console.log('content: ' + body);
+                  console.log("#######BODY######");
+                  console.log('content: ' + body);
                   console.log("########GET IMAGE######");
                   // var body_json_str = JSON.stringify(body);
                   // var body_json = JSON.parse(body_json_str);
