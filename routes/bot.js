@@ -124,6 +124,8 @@ router.post('/',function(req, res){
                       //mids = res.send(body.mid);
                       //console.log('content: ' + body);
                       console.log('content: ' + JSON.stringify(body));
+                  }else {
+                      console.log('error: ' + error);
                   }
               }
               console.log("########END MID######");
