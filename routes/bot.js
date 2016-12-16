@@ -111,7 +111,7 @@ router.post('/',function(req, res){
 
               console.log("########GET MID######");
               // get Mid
-              var mid;
+
               var options = {
                   url: 'https://api.line.me/v1/oauth/verify',
                   headers: headers
@@ -121,8 +121,37 @@ router.post('/',function(req, res){
                     if (!error && response.statusCode == 200) {
                         //res.send(body);
                         //mids = res.send(body.mid);
-                        mid = body; 
+                        var d = JSON.parse(body)
+                        console.log('mid: ' + d.mid);
                         console.log('content: ' + JSON.stringify(mid));
+
+
+                        console.log("########GET PROFILE URL######");
+                        var data = {
+                          mid : d.mid
+                        };
+
+                        console.log('data: ' + data);
+                    
+                        var options = {
+                            url: 'https://api.line.me/v1/profiles',
+                            headers: headers ,
+                            body: data
+                        };
+
+                        request(options, function (error, response, body) {
+                              if (!error && response.statusCode == 200) {
+                                  //res.send(body);
+                                  //mids = res.send(body.mid);
+                                  //var b = JSON.parse(body)
+                                  console.log('GET PROFILE URL content: ' + JSON.stringify(body));
+                              }else {
+                                  console.log('error: ' + error);
+                              }
+                        });
+                        console.log("########END PROFILE URL######");
+
+
                     }else {
                         console.log('error: ' + error);
                     }
@@ -130,32 +159,6 @@ router.post('/',function(req, res){
               console.log("########END MID######");
 
 
-              console.log("########GET PROFILE URL######");
-
-
-              var b = JSON.parse(mid)
-              console.log('mid!!!!!!: ' + b.mid);
-              var data = {
-                mid : b.mid
-              };
-
-              var options = {
-                  url: 'https://api.line.me/v1/profiles',
-                  headers: headers ,
-                  body: data
-              };
-
-              request(options, function (error, response, body) {
-                    if (!error && response.statusCode == 200) {
-                        //res.send(body);
-                        //mids = res.send(body.mid);
-                        var b = JSON.parse(body)
-                        console.log('content: ' + JSON.stringify(body));
-                    }else {
-                        console.log('error: ' + error);
-                    }
-              });
-              console.log("########END PROFILE URL######");
 
               //console.log("########SHOW IMAGE######");
               //send image
