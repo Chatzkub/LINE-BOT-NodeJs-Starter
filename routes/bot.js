@@ -193,6 +193,9 @@ function getProfileURL(event, body ,res){
   var headers = {
       'Authorization': getAuthorization()
   };
+
+
+  console.log("########event######"+ JSON.stringify(event));
   console.log("########userId######"+ event.source.userId);
 
   var options = {
@@ -201,17 +204,17 @@ function getProfileURL(event, body ,res){
     method: 'GET'
   };
 
-  request(options, function (error, response, body) {
-        //console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
-        if (!error && response.statusCode == 200) {
-            //res.send(body);
-            //mids = res.send(body.mid);
-            //var b = JSON.parse(body)
-            console.log('GET PROFILE URL content: ' + JSON.stringify(body));
+  // request(options, function (error, response, body) {
+  //       //console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
+  //       if (!error && response.statusCode == 200) {
+  //           //res.send(body);
+  //           //mids = res.send(body.mid);
+  //           //var b = JSON.parse(body)
+  //           console.log('GET PROFILE URL content: ' + JSON.stringify(body));
 
-            getImage(options, body, res , image);
-        }
-  });
+  //           getImage(options, body, res , image);
+  //       }
+  // });
   //########END PROFILE URL######
 }
 
