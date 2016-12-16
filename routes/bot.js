@@ -1,5 +1,4 @@
 var test = "in bot js";
-var varify = require('./varify');
 
 
 var express = require('express');
@@ -111,6 +110,24 @@ router.post('/',function(req, res){
               // console.log("########LOAD IMAGE######");
 
               console.log("########SHOW IMAGE######");
+
+
+              // get Mid
+              var options = {
+                  url: 'https://api.line.me/v1/oauth/verify',
+                  headers: headers
+              };
+
+              function callback(error, response, body) {
+                  if (!error && response.statusCode == 200) {
+                      //res.send(body);
+                      //mids = res.send(body.mid);
+                      //console.log('content: ' + body);
+                      console.log('content: ' + JSON.stringify(body));
+                  }
+              }
+
+
 
               //send image
               // var photo_meta = {
@@ -266,7 +283,6 @@ router.get('/testsendiamge', function(req, res, next) {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.send(test);
-    res.send(varify.mids);
 
     
     // res.type('jpg'); 
