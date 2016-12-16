@@ -134,6 +134,8 @@ router.post('/',function(req, res){
 
               console.log("########GET PROFILE URL######");
 
+
+              console.log('mid!!!!!!: ' + mid);
               var data = {
                 mid : mid
               };
