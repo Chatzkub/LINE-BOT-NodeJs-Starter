@@ -128,15 +128,13 @@ router.post('/',function(req, res){
 
                         console.log("########GET PROFILE URL######");
                         var data = {
-                          mid : d.mid
+                          'mid' : d.mid
                         };
 
-                        console.log('data: ' + data);
-                    
                         var options = {
                             url: 'https://api.line.me/v1/profiles',
                             headers: headers ,
-                            body: data
+                            body: JSON.stringify(data)
                         };
 
                         request(options, function (error, response, body) {
