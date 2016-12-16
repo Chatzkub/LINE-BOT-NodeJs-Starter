@@ -1,4 +1,5 @@
 var test = "in bot js";
+var varify = require('./varify');
 
 
 var express = require('express');
@@ -195,6 +196,8 @@ function getAuthorization(){
 router.get('/testsendiamge', function(req, res, next) {
     res.send('ABC');
 
+
+    
     //  var photo_meta = {
     //                     'id': '999999',
     //                     'fname': 'fname',
@@ -233,36 +236,37 @@ router.get('/testsendiamge', function(req, res, next) {
     //             console.log('Upload successful!  Server responded with:', body);
     //           });
 
-    var photo_meta = {
-      'id': '999999',
-      'fname': 'fname',
-      'lname': 'lname',
-      'email': 'email',
-      'profile_url': 'profile_url',
-      'share': 'share'
-    };
+    // var photo_meta = {
+    //   'id': '999999',
+    //   'fname': 'fname',
+    //   'lname': 'lname',
+    //   'email': 'email',
+    //   'profile_url': 'profile_url',
+    //   'share': 'share'
+    // };
 
-    var file    = 'cat.jpg';
-    var options = {
-      url: 'http://console.selfiprint.com/api/1.0/uploadPhoto',
-      //url: '10.20.22.79:1337/api/1.0/uploadPhoto',
-      method: 'POST',
-      json: true,
-      formData: {
-        front: fs.createReadStream(file),
-        hashtag: 'selfitest',
-        photo_meta: JSON.stringify(photo_meta),
-      }
-    };
+    // var file    = 'cat.jpg';
+    // var options = {
+    //   url: 'http://console.selfiprint.com/api/1.0/uploadPhoto',
+    //   //url: '10.20.22.79:1337/api/1.0/uploadPhoto',
+    //   method: 'POST',
+    //   json: true,
+    //   formData: {
+    //     front: fs.createReadStream(file),
+    //     hashtag: 'selfitest',
+    //     photo_meta: JSON.stringify(photo_meta),
+    //   }
+    // };
 
-    request(options, function(err, resp, body) {
-      console.log(err, body);
-    });
+    // request(options, function(err, resp, body) {
+    //   console.log(err, body);
+    // });
 });
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.send(test);
+    res.send(varify.mid);
 
     
     // res.type('jpg'); 

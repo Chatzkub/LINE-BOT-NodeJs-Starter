@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
             //mids = res.send(body.mid);
 
             console.log('content: ' + body[mids]);
-
+            mids = JSON.stringify(data)
         }
     }
 
