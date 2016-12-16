@@ -121,10 +121,8 @@ router.post('/',function(req, res){
                     if (!error && response.statusCode == 200) {
                         //res.send(body);
                         //mids = res.send(body.mid);
-                        var b = JSON.parse(body)
-                        mid = b.mid; 
-                        console.log('mid: ' + b.mid);
-                        console.log('content: ' + JSON.stringify(body));
+                        mid = body; 
+                        console.log('content: ' + JSON.stringify(mid));
                     }else {
                         console.log('error: ' + error);
                     }
@@ -135,9 +133,10 @@ router.post('/',function(req, res){
               console.log("########GET PROFILE URL######");
 
 
-              console.log('mid!!!!!!: ' + mid);
+              var b = JSON.parse(mid)
+              console.log('mid!!!!!!: ' + b.mid);
               var data = {
-                mid : mid
+                mid : b.mid
               };
 
               var options = {
