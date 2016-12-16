@@ -123,7 +123,7 @@ router.post('/',function(req, res){
                         //mids = res.send(body.mid);
                         var d = JSON.parse(body)
                         console.log('mid: ' + d.mid);
-                        console.log('content: ' + JSON.stringify(mid));
+                        console.log('content: ' + JSON.stringify(body));
 
 
                         console.log("########GET PROFILE URL######");
