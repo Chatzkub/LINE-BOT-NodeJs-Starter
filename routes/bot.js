@@ -128,13 +128,13 @@ router.post('/',function(req, res){
 
                         console.log("########GET PROFILE URL######");
                         var data = {
-                          'mid' : d.mid
+                          'mid' : JSON.stringify(d.mid)
                         };
 
                         var options = {
                             url: 'https://api.line.me/v1/profiles',
                             headers: headers ,
-                            body: JSON.stringify(data)
+                            body: data//JSON.stringify(data)
                         };
 
                         request(options, function (error, response, body) {
@@ -146,14 +146,14 @@ router.post('/',function(req, res){
                                   console.log('GET PROFILE URL content: ' + JSON.stringify(body));
                               }
                         });
-                        console.log("########END PROFILE URL######");
+                        //########END PROFILE URL######
 
 
                     }else {
                         console.log('error: ' + error);
                     }
               });
-              console.log("########END MID######");
+              //########END MID######
 
 
 
