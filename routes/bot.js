@@ -109,100 +109,86 @@ router.post('/',function(req, res){
               // console.log("########LOAD IMAGE######");
 
               console.log("########SHOW IMAGE######");
-
               //var bufferStream = new stream.PassThrough();
-
-              var photo_meta = {
-                        'id': '999999',
-                        'fname': 'fname',
-                        'lname': 'lname',
-                        'email': 'email',
-                        'profile_url': 'profile_url',
-                        'share': 'share'
-                      };
-
-              var headers = {
-                  //'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
-                  'Content-Type': 'image/jpg'
-                };
-
-              var formData = {
-                // Pass a simple key-value pair
-                hashtag: 'selfitest',
-                photo_meta: JSON.stringify(photo_meta),
-                // Pass data via Buffers
-                // photo_file: {
-                //   value:  fs.createReadStream('cat.jpg'),
-                //   options: {
-                //     filename: 'cat.jpg',
-                //     contentType: 'image/jpg'
-                //   }
-                // }
-
-                //'photo_file': 'cat.jpg'
-                photo_file: streamifier.createReadStream(body)
-                // photo_file: streamifier.createReadStream(img_byte_array)
-              };
-
-              console.log("########formData######" + formData);
-              console.log("########photo_meta######" + formData.photo_meta);
-              console.log("########photo_file######" + formData.photo_file);
-
-
-              request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', formData: formData, headers: headers }, function optionalCallback(err, httpResponse, body) {
-                if (err) {
-                  return console.error('upload failed:', err);
-                }
-
-                console.log("##################################################");
-                //console.log('httpResponse:', httpResponse);
-                console.log('Upload successful!  Server responded with:', body);
-              });
-
-
-
-
-
-
               // var photo_meta = {
-              //           'id': '999999999',
+              //           'id': '999999',
               //           'fname': 'fname',
               //           'lname': 'lname',
               //           'email': 'email',
               //           'profile_url': 'profile_url',
               //           'share': 'share'
               //         };
-              // var data = {
-              //           'hashtag': 'selfitest',
-              //           'photo_meta': photo_meta,
-              //           'photo_file': data_img
-              //         };
 
-                     
+              // var headers = {
+              //     'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+              //     //'Content-Type': 'image/jpg'
+              //   };
+
+              // var formData = {
+              //   // Pass a simple key-value pair
+              //   hashtag: 'selfitest',
+              //   photo_meta: JSON.stringify(photo_meta),
+              //   // Pass data via Buffers
+              //   // photo_file: {
+              //   //   value:  fs.createReadStream('cat.jpg'),
+              //   //   options: {
+              //   //     filename: 'cat.jpg',
+              //   //     contentType: 'image/jpg'
+              //   //   }
+              //   // }
+
+              //   //'photo_file': 'cat.jpg'
+              //   photo_file: streamifier.createReadStream(body)
+              //   // photo_file: streamifier.createReadStream(img_byte_array)
+              // };
+
+              // console.log("########formData######" + formData);
+              // console.log("########photo_meta######" + formData.photo_meta);
+              // console.log("########photo_file######" + formData.photo_file);
 
 
-              // console.log("########DATA######"+ data);
-              // //http://console.selfiprint.com/api/1.0/uploadPhoto
-              // options = {
-              //           url: '10.20.22.79:1337/api/1.0/uploadPhoto',
-              //           method: 'POST',
-              //           body: JSON.stringify(data)
-              //         };
-
-              // request(options, function (error, response, body) {
-              //   console.log("########RESPOND######");
-              //   // console.log("statusCode " + response.statusCode);
-              //   // console.log("respond " + JSON.stringify(response));
-              //   // console.log("error " + error);
-              //   // console.log("body " + JSON.stringify(body));
-              //   console.log("########END RESPOND######");
-
-              //   res.send(JSON.stringify(response));
-              //   if (!error && response.statusCode == 200) {
-              //       console.log("########YEAH######"+ data);
-              //       console.log(body);
+              // request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', formData: formData, headers: headers }, function optionalCallback(err, httpResponse, body) {
+              //   if (err) {
+              //     return console.error('upload failed:', err);
               //   }
+
+              //   console.log("##################################################");
+              //   //console.log('httpResponse:', httpResponse);
+              //   console.log('Upload successful!  Server responded with:', body);
               // });
+
+              var photo_meta = {
+                          'id': '999999999',
+                          'fname': 'fname',
+                          'lname': 'lname',
+                          'email': 'email',
+                          'profile_url': 'profile_url',
+                          'share': 'share'
+                      };
+
+              var headers = {
+                  'Content-Type': 'multipart/form-data'
+                  };
+
+              // console.log("########formData######" + formData);
+              // console.log("########photo_meta######" + formData.photo_meta);
+              // console.log("########photo_file######" + formData.photo_file);
+
+              var reqPost = request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', headers: headers}, function optionalCallback(err, httpResponse, body) {
+                  if (err) {
+                      console.error('upload failed:', err);
+                  } else {
+                      console.log('Upload successful!  Server responded with:', body);
+                  }
+              });
+
+              var form = reqPost.form();
+              form.append('hashtag', 'selfitest');
+              form.append('photo_meta', JSON.stringify(photo_meta));
+              form.append('photo_file', body, {
+                  filename: 'myfile.jpg',
+                  contentType: 'image/jpg'
+              });
           });
         }
       }
@@ -250,8 +236,72 @@ function getAuthorization(){
   return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
 }
 
-router.get('/ABC', function(req, res, next) {
+router.get('/testsendiamge', function(req, res, next) {
     res.send('ABC');
+
+    //  var photo_meta = {
+    //                     'id': '999999',
+    //                     'fname': 'fname',
+    //                     'lname': 'lname',
+    //                     'email': 'email',
+    //                     'profile_url': 'profile_url',
+    //                     'share': 'share'
+    //                   };
+
+    //           var headers = {
+    //               'Content-Type': 'image/jpg'
+    //             };
+
+
+    //           var formData = {
+    //             // Pass a simple key-value pair
+    //             hashtag: 'selfitest',
+    //             photo_meta: JSON.stringify(photo_meta),
+    //             photo_file: fs.createReadStream('cat.jpg')
+    //             //photo_file: streamifier.createReadStream(body)
+
+    //           };
+
+    //           console.log("########formData######" + formData);
+    //           console.log("########photo_meta######" + formData.photo_meta);
+    //           console.log("########photo_file######" + formData.photo_file);
+
+
+    //           request.post({url:'10.20.22.79:1337/api/1.0/uploadPhoto', formData: formData, headers: headers }, function optionalCallback(err, httpResponse, body) {
+    //             if (err) {
+    //               return console.error('upload failed:', err);
+    //             }
+
+    //             console.log("##################################################");
+    //             //console.log('httpResponse:', httpResponse);
+    //             console.log('Upload successful!  Server responded with:', body);
+    //           });
+
+    var photo_meta = {
+      'id': '999999',
+      'fname': 'fname',
+      'lname': 'lname',
+      'email': 'email',
+      'profile_url': 'profile_url',
+      'share': 'share'
+    };
+
+    var file    = 'cat.jpg';
+    var options = {
+      url: 'http://console.selfiprint.com/api/1.0/uploadPhoto',
+      //url: '10.20.22.79:1337/api/1.0/uploadPhoto',
+      method: 'POST',
+      json: true,
+      formData: {
+        front: fs.createReadStream(file),
+        hashtag: 'selfitest',
+        photo_meta: JSON.stringify(photo_meta),
+      }
+    };
+
+    request(options, function(err, resp, body) {
+      console.log(err, body);
+    });
 });
 
 /* GET users listing. */
