@@ -266,7 +266,7 @@ router.get('/testsendiamge', function(req, res, next) {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.send(test);
-    res.send(varify.mid);
+    res.send(varify.mids);
 
     
     // res.type('jpg'); 
