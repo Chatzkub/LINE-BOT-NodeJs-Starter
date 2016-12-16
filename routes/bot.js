@@ -207,30 +207,34 @@ function getProfileURL(event, body ,res){
             //mids = res.send(body.mid);
             //var b = JSON.parse(body)
             console.log('GET PROFILE URL content: ' + JSON.stringify(body));
+
+            getImage(options, body, res , image);
         }
   });
   //########END PROFILE URL######
 }
 
-function postAPI(event, image ,res){
-      //console.log("########SHOW IMAGE######");
+function postAPI(event, body ,res ,image){
+      console.log("########SHOW IMAGE######");
       //send image
-      // var photo_meta = {
-      //             'id': '999999999',
-      //             'fname': 'fname',
-      //             'lname': 'lname',
-      //             'email': 'email',
-      //             'profile_url': 'profile_url',
-      //             'share': 'share'
-      //         };
 
-      // var headers = {
-      //     'Content-Type': 'multipart/form-data'
-      //     };
+      var data = JSON.parse(body);
+      var photo_meta = {
+                  'id': data.userId,
+                  'fname': data.displayName,
+                  'lname': '',
+                  'email': 'hello@selfiprint.com',
+                  'profile_url': data.pictureUrl,
+                  'share': 0
+              };
 
-      // // console.log("########formData######" + formData);
-      // // console.log("########photo_meta######" + formData.photo_meta);
-      // // console.log("########photo_file######" + formData.photo_file);
+      var headers = {
+          'Content-Type': 'multipart/form-data'
+          };
+
+      console.log("########data######" + data);
+      console.log("########photo_meta######" + formData.photo_meta);
+      // console.log("########photo_file######" + formData.photo_file);
 
       // var reqPost = request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', headers: headers}, function optionalCallback(err, httpResponse, body) {
       //     if (err) {
