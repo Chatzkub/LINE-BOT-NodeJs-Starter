@@ -110,25 +110,51 @@ router.post('/',function(req, res){
 
 
               console.log("########GET MID######");
-
               // get Mid
+              var mid;
               var options = {
                   url: 'https://api.line.me/v1/oauth/verify',
                   headers: headers
               };
 
-            request(options, function (error, response, body) {
-                  if (!error && response.statusCode == 200) {
-                      //res.send(body);
-                      //mids = res.send(body.mid);
-                      var b = JSON.parse(body)
-                      console.log('mid: ' + b.mid);
-                      console.log('content: ' + JSON.stringify(body));
-                  }else {
-                      console.log('error: ' + error);
-                  }
+              request(options, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        //res.send(body);
+                        //mids = res.send(body.mid);
+                        var b = JSON.parse(body)
+                        mid = b.mid; 
+                        console.log('mid: ' + b.mid);
+                        console.log('content: ' + JSON.stringify(body));
+                    }else {
+                        console.log('error: ' + error);
+                    }
               });
               console.log("########END MID######");
+
+
+              console.log("########GET PROFILE URL######");
+
+              var data = {
+                mid : mid
+              };
+
+              var options = {
+                  url: 'https://api.line.me/v1/profiles',
+                  headers: headers ,
+                  body: data
+              };
+
+              request(options, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        //res.send(body);
+                        //mids = res.send(body.mid);
+                        var b = JSON.parse(body)
+                        console.log('content: ' + JSON.stringify(body));
+                    }else {
+                        console.log('error: ' + error);
+                    }
+              });
+              console.log("########END PROFILE URL######");
 
               //console.log("########SHOW IMAGE######");
               //send image
