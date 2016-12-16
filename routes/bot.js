@@ -134,7 +134,7 @@ router.post('/',function(req, res){
                         var options = {
                             url: 'https://api.line.me/v1/profiles',
                             headers: headers ,
-                            body: data//JSON.stringify(data)
+                            body: JSON.stringify(data)
                         };
 
                         request(options, function (error, response, body) {
