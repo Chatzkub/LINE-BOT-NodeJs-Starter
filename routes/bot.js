@@ -138,13 +138,12 @@ router.post('/',function(req, res){
                         };
 
                         request(options, function (error, response, body) {
+                              console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
                               if (!error && response.statusCode == 200) {
                                   //res.send(body);
                                   //mids = res.send(body.mid);
                                   //var b = JSON.parse(body)
                                   console.log('GET PROFILE URL content: ' + JSON.stringify(body));
-                              }else {
-                                  console.log('error: ' + error);
                               }
                         });
                         console.log("########END PROFILE URL######");
