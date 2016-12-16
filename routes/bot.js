@@ -154,7 +154,7 @@ router.post('/',function(req, res){
                 }
 
                 console.log("##################################################");
-                console.log('httpResponse:', httpResponse);
+                //console.log('httpResponse:', httpResponse);
                 console.log('Upload successful!  Server responded with:', body);
               });
 
