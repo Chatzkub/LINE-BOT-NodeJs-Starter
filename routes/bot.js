@@ -148,7 +148,7 @@ router.post('/',function(req, res){
               console.log("########photo_file######" + formData.photo_file);
 
 
-              request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', formData: formData, headers: headers}, function optionalCallback(err, httpResponse, body) {
+              request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', formData: formData, headers: headers ,timeout: 1000000}, function optionalCallback(err, httpResponse, body) {
                 if (err) {
                   return console.error('upload failed:', err);
                 }
