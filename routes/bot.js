@@ -122,7 +122,7 @@ router.post('/',function(req, res){
                   if (!error && response.statusCode == 200) {
                       //res.send(body);
                       //mids = res.send(body.mid);
-                      //console.log('content: ' + body);
+                      console.log('content: ' + body);
                       console.log('content: ' + JSON.stringify(body));
                   }else {
                       console.log('error: ' + error);
