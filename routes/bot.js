@@ -198,8 +198,10 @@ function getProfileURL(event, body ,res){
   console.log("########event######"+ JSON.stringify(event));
   console.log("########userId######"+ event.source.userId);
 
+  var data = JSON.parse(event)
+    console.log("########DATA######"+ data);
   var options = {
-    url: 'https://api.line.me/v2/bot/profile/' + event.source.userId,
+    url: 'https://api.line.me/v2/bot/profile/' + data.userId,
     headers: headers,
     method: 'GET'
   };
