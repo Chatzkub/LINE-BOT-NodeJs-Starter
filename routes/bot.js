@@ -197,10 +197,7 @@ function getProfileURL(event, body ,res){
 
   //console.log("########event######"+ JSON.stringify(event));
   //console.log("########userId######"+ event.source.userId);
-  //var sadasda = JSON.parse(event)
-
-
-
+  
   var options = {
     url: 'https://api.line.me/v2/bot/profile/' + event.source.userId,
     headers: headers,
@@ -218,9 +215,8 @@ function getProfileURL(event, body ,res){
             //mids = res.send(body.mid);
             //var b = JSON.parse(body)
             console.log('GET PROFILE URL content: ' + JSON.stringify(body));
-            console.log("########END######");
 
-            //getImage(options, body, res , image);
+            postAPI(options, body, res , image);
         }else {
            console.log('GET PROFILE URL error: ' + error);
         }
@@ -229,9 +225,9 @@ function getProfileURL(event, body ,res){
 }
 
 function postAPI(event, body ,res ,image){
+
       console.log("########SHOW IMAGE######");
       //send image
-
       var data = JSON.parse(body);
       var photo_meta = {
                   'id': data.userId,
@@ -248,6 +244,8 @@ function postAPI(event, body ,res ,image){
 
       console.log("########data######" + data);
       console.log("########photo_meta######" + formData.photo_meta);
+      console.log("##########################END########################");
+
       // console.log("########photo_file######" + formData.photo_file);
 
       // var reqPost = request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', headers: headers}, function optionalCallback(err, httpResponse, body) {
