@@ -196,7 +196,7 @@ function getProfileURL(event, body ,res){
 
 
   //console.log("########event######"+ JSON.stringify(event));
-  console.log("########userId######"+ event.source.userId);
+  //console.log("########userId######"+ event.source.userId);
   //var sadasda = JSON.parse(event)
 
 
@@ -218,8 +218,9 @@ function getProfileURL(event, body ,res){
             //mids = res.send(body.mid);
             //var b = JSON.parse(body)
             console.log('GET PROFILE URL content: ' + JSON.stringify(body));
+            console.log("########END######");
 
-            getImage(options, body, res , image);
+            //getImage(options, body, res , image);
         }else {
            console.log('GET PROFILE URL error: ' + error);
         }
