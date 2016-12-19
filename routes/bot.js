@@ -199,7 +199,7 @@ function getProfileURL(event, body ,res){
   console.log("########userId######"+ event.source.userId);
 
   var options = {
-    url: 'https://api.line.me/v2/bot/profile/' + event.userId//event.source.userId,
+    url: 'https://api.line.me/v2/bot/profile/' + event.userId,//event.source.userId,
     headers: headers,
     method: 'GET'
     };    
