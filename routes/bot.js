@@ -203,7 +203,7 @@ function getProfileURL(event, body ,res){
     headers: headers,
     method: 'GET'
   };
-  console.log("########URL######"+ "https://api.line.me/v2/bot/profile/" + event.source.userId);
+  //console.log("########URL######"+ "https://api.line.me/v2/bot/profile/" + event.source.userId);
 
   request(options, function (error, response, body) {
         //console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
