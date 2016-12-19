@@ -203,18 +203,21 @@ function getProfileURL(event, body ,res){
     headers: headers,
     method: 'GET'
   };
+  console.log("########URL######"+ "https://api.line.me/v2/bot/profile/" + event.source.userId);
 
-  // request(options, function (error, response, body) {
-  //       //console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
-  //       if (!error && response.statusCode == 200) {
-  //           //res.send(body);
-  //           //mids = res.send(body.mid);
-  //           //var b = JSON.parse(body)
-  //           console.log('GET PROFILE URL content: ' + JSON.stringify(body));
+  request(options, function (error, response, body) {
+        //console.log("respond " + error + " " + JSON.stringify(response) + " " + JSON.stringify(body) + "############End##########");
+        if (!error && response.statusCode == 200) {
+            //res.send(body);
+            //mids = res.send(body.mid);
+            //var b = JSON.parse(body)
+            console.log('GET PROFILE URL content: ' + JSON.stringify(body));
 
-  //           getImage(options, body, res , image);
-  //       }
-  // });
+            getImage(options, body, res , image);
+        }else {
+           console.log('GET PROFILE URL error: ' + error);
+        }
+  });
   //########END PROFILE URL######
 }
 
