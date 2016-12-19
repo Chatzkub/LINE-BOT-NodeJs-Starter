@@ -242,8 +242,8 @@ function postAPI(event, body ,res ,image){
           'Content-Type': 'multipart/form-data'
           };
 
-      console.log("########data######" + data);
-      console.log("########photo_meta######" + formData.photo_meta);
+      console.log("########data######" + JSON.stringify(data));
+      console.log("########photo_meta######" + JSON.stringify(photo_meta));
       console.log("##########################END########################");
 
       // console.log("########photo_file######" + formData.photo_file);
