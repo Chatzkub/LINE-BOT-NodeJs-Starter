@@ -198,13 +198,14 @@ function getProfileURL(event, body ,res){
   console.log("########event######"+ JSON.stringify(event));
   console.log("########userId######"+ event.source.userId);
 
-  var data = JSON.parse(event)
-    console.log("########DATA######"+ data);
   var options = {
-    url: 'https://api.line.me/v2/bot/profile/' + data.userId,
+    url: 'https://api.line.me/v2/bot/profile/' + event.source.userId,
     headers: headers,
     method: 'GET'
-  };
+    };    
+
+    console.log("########options######"+ JSON.stringify(options));
+
   //console.log("########URL######"+ "https://api.line.me/v2/bot/profile/" + event.source.userId);
 
   request(options, function (error, response, body) {
