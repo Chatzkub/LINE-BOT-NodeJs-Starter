@@ -246,23 +246,22 @@ function postAPI(event, body ,res ,image){
       console.log("########photo_meta######" + JSON.stringify(photo_meta));
       console.log("##########################END########################");
 
-      // console.log("########photo_file######" + formData.photo_file);
 
-      // var reqPost = request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', headers: headers}, function optionalCallback(err, httpResponse, body) {
-      //     if (err) {
-      //         console.error('upload failed:', err);
-      //     } else {
-      //         console.log('Upload successful!  Server responded with:', body);
-      //     }
-      // });
+      var reqPost = request.post({url:'http://console.selfiprint.com/api/1.0/uploadPhoto', headers: headers}, function optionalCallback(err, httpResponse, body) {
+          if (err) {
+              console.error('upload failed:', err);
+          } else {
+              console.log('Upload successful!  Server responded with:', body);
+          }
+      });
 
-      // var form = reqPost.form();
-      // form.append('hashtag', 'selfitest');
-      // form.append('photo_meta', JSON.stringify(photo_meta));
-      // form.append('photo_file', body, {
-      //     filename: 'myfile.jpg',
-      //     contentType: 'image/jpg'
-      // });
+      var form = reqPost.form();
+      form.append('hashtag', 'selfitest');
+      form.append('photo_meta', JSON.stringify(photo_meta));
+      form.append('photo_file', image, {
+          filename: 'myfile.jpg',
+          contentType: 'image/jpg'
+      });
       //end send image
 }
 
