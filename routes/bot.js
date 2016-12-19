@@ -195,8 +195,11 @@ function getProfileURL(event, body ,res){
   };
 
 
-  console.log("########event######"+ JSON.stringify(event));
+  //console.log("########event######"+ JSON.stringify(event));
   console.log("########userId######"+ event.source.userId);
+  //var sadasda = JSON.parse(event)
+
+
 
   var options = {
     url: 'https://api.line.me/v2/bot/profile/' + event.source.userId,
