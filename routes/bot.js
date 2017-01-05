@@ -59,7 +59,7 @@ router.post('/',function(req, res){
                   //proxy: '',
                   method: 'POST',
                   headers: headers,
-                  body: "test"//JSON.stringify(data)
+                  body: JSON.stringify("test")//JSON.stringify(data)
               };
 
           request(options, function (error, response, body) {
