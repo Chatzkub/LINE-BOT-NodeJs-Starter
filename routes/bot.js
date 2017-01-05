@@ -48,7 +48,7 @@ router.post('/',function(req, res){
             "altText": "this is a buttons template",
             "template": {
                 "type": "buttons",
-                "thumbnailImageUrl": "http://images.all-free-download.com/images/graphiclarge/beach_patrol_604977.jpg",
+                "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2016/12/17/18/51/spices-1914130_960_720.jpg",
                 "title": "Menu",
                 "text": "Please select",
                 "actions": [
