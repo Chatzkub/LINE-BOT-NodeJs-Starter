@@ -101,24 +101,7 @@ router.post('/',function(req, res){
   }
 });
 
-function getText(str){
-    var t = ""
-    switch(str) {
-    case "1":
-        t = "ตอบ 1";
-        break;
-    case "2":
-        t = "ตอบ 2";
-        break;
-    default:
-        t = "ตอบ ไม่มี";
-}
-  return t;
-}
 
-function getAuthorization(){
-  return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
-}
 
 function getImage(options, event, res) {
 
@@ -206,6 +189,59 @@ function postAPI(event, body ,res ,image){
           contentType: 'image/jpg'
       });
       //end send image
+}
+
+function getText(str){
+
+var abc = {
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+      "type": "buttons",
+      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+      "title": "Menu",
+      "text": "Please select",
+      "actions": [
+          {
+            "type": "postback",
+            "label": "Buy",
+            "data": "action=buy&itemid=123"
+          },
+          {
+            "type": "postback",
+            "label": "Add to cart",
+            "data": "action=add&itemid=123"
+          },
+          {
+            "type": "uri",
+            "label": "View detail",
+            "uri": "http://example.com/page/123"
+          }
+      ]
+  }
+}
+
+return abc;
+
+
+
+
+//     var t = ""
+//     switch(str) {
+//     case "1":
+//         t = "ตอบ 1";
+//         break;
+//     case "2":
+//         t = "ตอบ 2";
+//         break;
+//     default:
+//         t = "ตอบ ไม่มี";
+// }
+//   return t;
+}
+
+function getAuthorization(){
+  return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
 }
 
 
