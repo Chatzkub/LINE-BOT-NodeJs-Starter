@@ -104,10 +104,10 @@ router.post('/',function(req, res){
 function getText(str){
     var t = ""
     switch(str) {
-    case 1:
+    case "1":
         t = "ตอบ 1";
         break;
-    case 2:
+    case "2":
         t = "ตอบ 2";
         break;
     default:
