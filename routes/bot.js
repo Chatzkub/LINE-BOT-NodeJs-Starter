@@ -53,19 +53,19 @@ router.post('/',function(req, res){
                 "text": "Please select",
                 "actions": [
                     {
-                        "type": "postback",
-                        "label": "Buy",
-                        "data": "action=buy&itemid=123"
+                        "type": "message",
+                        "label": "#ABC",
+                        "text": "#ABC"
                     },
                     {
-                        "type": "postback",
-                        "label": "Add to cart",
-                        "data": "action=add&itemid=123"
+                        "type": "message",
+                        "label": "#ABC2",
+                        "text": "#ABC2"
                     },
                     {
-                        "type": "uri",
-                        "label": "View detail",
-                        "uri": "http://example.com/page/123"
+                        "type": "message",
+                        "label": "#ABC3",
+                        "text": "#ABC3"
                     }
                 ]
             }
