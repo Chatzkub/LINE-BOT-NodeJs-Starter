@@ -36,7 +36,7 @@ router.post('/',function(req, res){
         if(req.body.events[i].message.type == 'text'){
           var message = {
             'type': 'text',
-            'text': req.body.events[i].message.text
+            'text': "TESTTTTT"//req.body.events[i].message.text
           };
 
           var data = {
@@ -59,7 +59,7 @@ router.post('/',function(req, res){
                   //proxy: '',
                   method: 'POST',
                   headers: headers,
-                  body: JSON.stringify("test")//JSON.stringify(data)
+                  body: JSON.stringify(data)
               };
 
           request(options, function (error, response, body) {
