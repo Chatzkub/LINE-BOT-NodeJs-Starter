@@ -106,7 +106,11 @@ router.post('/',function(req, res){
           //console.log(JSON.stringify(data));
           //console.log("######data.messages########");
           //console.log(JSON.stringify(data.messages[0].text));
-          //console.log("########end######");
+
+          console.log("######Test Data########");
+          console.log(JSON.stringify(data));
+          console.log("######End########");
+
 
           options = {
                   url: 'https://api.line.me/v2/bot/message/reply',
