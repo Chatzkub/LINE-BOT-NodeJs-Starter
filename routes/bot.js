@@ -34,13 +34,42 @@ router.post('/',function(req, res){
       
       if(req.body.events[i].type == 'message'){
         if(req.body.events[i].message.type == 'text'){
-          var message = {
-            'type': 'text',
-            'text': getText(req.body.events[i].message.text)
-            //'text': req.body.events[i].message.text
-            //'text': "TESTTTTT"
 
-          };
+        //   var message = {
+        //     'type': 'text',
+        //     'text': getText(req.body.events[i].message.text)
+        //     //'text': req.body.events[i].message.text
+        //     //'text': "TESTTTTT"
+
+        //   };
+
+          var message = {
+            "type": "template",
+            "altText": "this is a buttons template",
+            "template": {
+                "type": "buttons",
+                "thumbnailImageUrl": "http://images.all-free-download.com/images/graphiclarge/beach_patrol_604977.jpg",
+                "title": "Menu",
+                "text": "Please select",
+                "actions": [
+                    {
+                        "type": "postback",
+                        "label": "Buy",
+                        "data": "action=buy&itemid=123"
+                    },
+                    {
+                        "type": "postback",
+                        "label": "Add to cart",
+                        "data": "action=add&itemid=123"
+                    },
+                    {
+                        "type": "uri",
+                        "label": "View detail",
+                        "uri": "http://example.com/page/123"
+                    }
+                ]
+            }
+          }
 
           var data = {
             'replyToken': req.body.events[i].replyToken,
@@ -192,52 +221,18 @@ function postAPI(event, body ,res ,image){
 }
 
 function getText(str){
-
-var abc = {
-  "type": "template",
-  "altText": "this is a buttons template",
-  "template": {
-      "type": "buttons",
-      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-      "title": "Menu",
-      "text": "Please select",
-      "actions": [
-          {
-            "type": "postback",
-            "label": "Buy",
-            "data": "action=buy&itemid=123"
-          },
-          {
-            "type": "postback",
-            "label": "Add to cart",
-            "data": "action=add&itemid=123"
-          },
-          {
-            "type": "uri",
-            "label": "View detail",
-            "uri": "http://example.com/page/123"
-          }
-      ]
-  }
+    var t = ""
+    switch(str) {
+    case "1":
+        t = "ตอบ 1";
+        break;
+    case "2":
+        t = "ตอบ 2";
+        break;
+    default:
+        t = "ตอบ ไม่มี";
 }
-
-return abc;
-
-
-
-
-//     var t = ""
-//     switch(str) {
-//     case "1":
-//         t = "ตอบ 1";
-//         break;
-//     case "2":
-//         t = "ตอบ 2";
-//         break;
-//     default:
-//         t = "ตอบ ไม่มี";
-// }
-//   return t;
+  return t;
 }
 
 function getAuthorization(){
