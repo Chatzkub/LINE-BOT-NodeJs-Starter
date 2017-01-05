@@ -36,7 +36,10 @@ router.post('/',function(req, res){
         if(req.body.events[i].message.type == 'text'){
           var message = {
             'type': 'text',
-            'text': "TESTTTTT"//req.body.events[i].message.text
+            'text': getText(req.body.events[i].message.text)
+            //'text': req.body.events[i].message.text
+            //'text': "TESTTTTT"
+
           };
 
           var data = {
@@ -98,6 +101,20 @@ router.post('/',function(req, res){
   }
 });
 
+function getText(str){
+    var t = ""
+    switch(str) {
+    case 1:
+        t = "ตอบ 1";
+        break;
+    case 2:
+        t = "ตอบ 2";
+        break;
+    default:
+        t = "ตอบ ไม่มี";
+}
+  return t;
+}
 
 function getAuthorization(){
   return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
