@@ -283,7 +283,7 @@ function getCarouselTemplate(){
                 "type": "carousel",
                 "columns": [
                     {
-                        "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2016/12/17/18/51/spices-1914130_960_720.jpg",
+                        "thumbnailImageUrl": "https://www.majorcineplex.com/uploads/content/images/Sausage-Party-trailer-still.jpg",
                         "title": "this is menu",
                         "text": "description",
                         "actions": [
@@ -306,6 +306,72 @@ function getCarouselTemplate(){
                     },
                     {
                         "thumbnailImageUrl": "https://www.majorcineplex.com/uploads/content/9246/cover_9246.jpg",
+                        "title": "this is menu",
+                        "text": "description",
+                        "actions": [
+                            {
+                                "type": "postback",
+                                "label": "Buy",
+                                "data": "action=buy&itemid=222"
+                            },
+                            {
+                                "type": "postback",
+                                "label": "Add to cart",
+                                "data": "action=add&itemid=222"
+                            },
+                            {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://example.com/page/222"
+                            }
+                        ]
+                    },
+                    {
+                        "thumbnailImageUrl": "https://www.majorcineplex.com/uploads/content/images/sausage-party-seth-rogen-trailer-01.jpg",
+                        "title": "this is menu",
+                        "text": "description",
+                        "actions": [
+                            {
+                                "type": "postback",
+                                "label": "Buy",
+                                "data": "action=buy&itemid=222"
+                            },
+                            {
+                                "type": "postback",
+                                "label": "Add to cart",
+                                "data": "action=add&itemid=222"
+                            },
+                            {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://example.com/page/222"
+                            }
+                        ]
+                    },
+                    {
+                        "thumbnailImageUrl": "https://www.majorcineplex.com/uploads/content/images/mean_girls_still.jpg",
+                        "title": "this is menu",
+                        "text": "description",
+                        "actions": [
+                            {
+                                "type": "postback",
+                                "label": "Buy",
+                                "data": "action=buy&itemid=222"
+                            },
+                            {
+                                "type": "postback",
+                                "label": "Add to cart",
+                                "data": "action=add&itemid=222"
+                            },
+                            {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://example.com/page/222"
+                            }
+                        ]
+                    },
+                    {
+                        "thumbnailImageUrl": "https://www.majorcineplex.com/uploads/content/images/05-mean-girls-christmas.w750.h560.2x.jpg",
                         "title": "this is menu",
                         "text": "description",
                         "actions": [
