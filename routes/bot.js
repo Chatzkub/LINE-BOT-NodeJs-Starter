@@ -43,29 +43,10 @@ router.post('/',function(req, res){
 
         //   };
 
-        var message = getButtons();
+        //var message = getConfirmTemplate();
+        //var message = getButtonsTemplate();
+        var message = getCarouselTemplate();
 
-        // confirm template
-        //   var message = {
-        //                 "type": "template",
-        //                 "altText": "this is a confirm template",
-        //                 "template": {
-        //                     "type": "confirm",
-        //                     "text": "Are you sure?",
-        //                     "actions": [
-        //                         {
-        //                             "type": "message",
-        //                             "label": "Yes",
-        //                             "text": "yes"
-        //                         },
-        //                         {
-        //                             "type": "message",
-        //                             "label": "No",
-        //                             "text": "no"
-        //                         }
-        //                     ]
-        //                 }
-        //     }
 
           var data = {
             'replyToken': req.body.events[i].replyToken,
@@ -234,8 +215,31 @@ function getText(str){
 }
   return t;
 }
+function getConfirmTemplate(){
+          var message = {
+                "type": "template",
+                "altText": "this is a confirm template",
+                "template": {
+                    "type": "confirm",
+                    "text": "Are you sure?",
+                    "actions": [
+                        {
+                            "type": "message",
+                            "label": "Yes",
+                            "text": "yes"
+                        },
+                        {
+                            "type": "message",
+                            "label": "No",
+                            "text": "no"
+                        }
+                    ]
+                }
+            }
+    return message;
+}
 
-function getButtons(){
+function getButtonsTemplate(){
     var message = {
             "type": "template",
             "altText": "this is a buttons template",
@@ -267,9 +271,66 @@ function getButtons(){
                     }
                 ]
             }
-          }
+        }
     return message;
 } 
+
+function getCarouselTemplate(){
+    var message =  {
+            "type": "template",
+            "altText": "this is a carousel template",
+            "template": {
+                "type": "carousel",
+                "columns": [
+                    {
+                        "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2016/12/17/18/51/spices-1914130_960_720.jpg",
+                        "title": "this is menu",
+                        "text": "description",
+                        "actions": [
+                            {
+                                "type": "postback",
+                                "label": "Buy",
+                                "data": "action=buy&itemid=111"
+                            },
+                            {
+                                "type": "postback",
+                                "label": "Add to cart",
+                                "data": "action=add&itemid=111"
+                            },
+                            {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://example.com/page/111"
+                            }
+                        ]
+                    },
+                    {
+                        "thumbnailImageUrl": "https://www.majorcineplex.com/uploads/content/9246/cover_9246.jpg",
+                        "title": "this is menu",
+                        "text": "description",
+                        "actions": [
+                            {
+                                "type": "postback",
+                                "label": "Buy",
+                                "data": "action=buy&itemid=222"
+                            },
+                            {
+                                "type": "postback",
+                                "label": "Add to cart",
+                                "data": "action=add&itemid=222"
+                            },
+                            {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://example.com/page/222"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    return message;
+}
 
 function getAuthorization(){
   return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
