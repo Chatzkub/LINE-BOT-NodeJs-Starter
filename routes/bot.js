@@ -43,38 +43,7 @@ router.post('/',function(req, res){
 
         //   };
 
-          var message = {
-            "type": "template",
-            "altText": "this is a buttons template",
-            "template": {
-                "type": "buttons",
-                "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2016/12/17/18/51/spices-1914130_960_720.jpg",
-                "title": "Menu",
-                "text": "Please select",
-                "actions": [
-                    {
-                        "type": "message",
-                        "label": "#ABC",
-                        "text": "#ABC"
-                    },
-                    {
-                        "type": "message",
-                        "label": "#ABC2",
-                        "text": "#ABC2"
-                    },
-                    {
-                        "type": "message",
-                        "label": "#ABC3",
-                        "text": "#ABC3"
-                    },
-                    {
-                        "type": "message",
-                        "label": "#ABC4",
-                        "text": "#ABC4"
-                    }
-                ]
-            }
-          }
+        var message = getButtons();
 
         // confirm template
         //   var message = {
@@ -112,9 +81,9 @@ router.post('/',function(req, res){
           //console.log("######data.messages########");
           //console.log(JSON.stringify(data.messages[0].text));
 
-          console.log("######Test Data########");
-          console.log(JSON.stringify(data));
-          console.log("######End########");
+          //console.log("######Test Data########");
+          //console.log(JSON.stringify(data));
+          //console.log("######End########");
 
 
           options = {
@@ -265,6 +234,42 @@ function getText(str){
 }
   return t;
 }
+
+function getButtons(){
+    var message = {
+            "type": "template",
+            "altText": "this is a buttons template",
+            "template": {
+                "type": "buttons",
+                "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2016/12/17/18/51/spices-1914130_960_720.jpg",
+                "title": "Menu",
+                "text": "Please select",
+                "actions": [
+                    {
+                        "type": "message",
+                        "label": "#ABC",
+                        "text": "#ABC"
+                    },
+                    {
+                        "type": "message",
+                        "label": "#ABC2",
+                        "text": "#ABC2"
+                    },
+                    {
+                        "type": "message",
+                        "label": "#ABC3",
+                        "text": "#ABC3"
+                    },
+                    {
+                        "type": "message",
+                        "label": "#ABC4",
+                        "text": "#ABC4"
+                    }
+                ]
+            }
+          }
+    return message;
+} 
 
 function getAuthorization(){
   return 'Bearer tf9fUp9VHwDxPcN9xZm+/lNoo+tDfA+02hmpiYqWFe1ob4ehXwzJKIvQnZY6mKbS68gai5ebRkhrd93NX5GycjDXrWwHhEjzl0Vx3aRAmuH621KoKsZve23jKAeaq80jRGhuCWMjJg5iQGyTo2zD7AdB04t89/1O/w1cDnyilFU=';
